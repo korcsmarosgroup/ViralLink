@@ -13,6 +13,8 @@
 # Installing packages
 if (!requireNamespace("tidyverse", quietly = TRUE)) 
   install.packages("tidyverse")
+if (!requireNamespace("devtools", quietly = TRUE)) 
+  install.packages("devtools")
 if(!'OmnipathR' %in% installed.packages()[,"Package"]){
   require(devtools)
   install_github('saezlab/OmnipathR')

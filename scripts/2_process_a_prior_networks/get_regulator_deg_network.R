@@ -12,12 +12,12 @@
 
 ##### Set up #####
 
-# Install requried packages
-if (!requireNamespace("dplyr", quietly = TRUE)) 
-  install.packages("dplyr")
+# Install required packages
+if (!requireNamespace("tidyverse", quietly = TRUE)) 
+  install.packages("tidyverse")
 
-# Laod required packages
-library(dplyr)
+# Load required packages
+library(tidyverse)
 
 # Define parameters
 args <- commandArgs(trailingOnly = TRUE)

@@ -10,11 +10,11 @@
 # Output: Networks in same format as input network (but tab seperated), filtered to include only interactions where source and target node are in the expressed list.
 
 # Installing packages
-if (!requireNamespace("dplyr", quietly = TRUE)) 
-  install.packages("dplyr")
+if (!requireNamespace("tidyverse", quietly = TRUE)) 
+  install.packages("tidyverse")
 
 # Load packages
-library(dplyr)
+library(tidyverse)
 
 # Define parameters
 args <- commandArgs(trailingOnly = TRUE)

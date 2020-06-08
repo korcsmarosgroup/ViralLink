@@ -23,15 +23,12 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
 if (!requireNamespace("DESeq2", quietly = TRUE)) 
   BiocManager::install("DESeq2")
-if (!requireNamespace("dplyr", quietly = TRUE)) 
-  install.packages("dplyr")
-if (!requireNamespace("tibble", quietly = TRUE)) 
-  install.packages("tibble")
+if (!requireNamespace("tidyverse", quietly = TRUE)) 
+  install.packages("tidyverse")
 
 # Load required packages
-library(dplyr)
+library(tidyverse)
 library(DESeq2)
-library(tibble)
 
 # Define parameters
 args <- commandArgs(trailingOnly = TRUE)

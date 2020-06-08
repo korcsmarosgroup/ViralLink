@@ -11,21 +11,15 @@
 ##### Setup #####
 
 # Installing packages
-if (!requireNamespace("dplyr", quietly = TRUE)) 
-  install.packages("dplyr")
-if (!requireNamespace("tibble", quietly = TRUE)) 
-  install.packages("tibble")
-if (!requireNamespace("purrr", quietly = TRUE)) 
-  install.packages("purrr")
+if (!requireNamespace("tidyverse", quietly = TRUE)) 
+  install.packages("tidyverse")
 if(!'OmnipathR' %in% installed.packages()[,"Package"]){
   require(devtools)
   install_github('saezlab/OmnipathR')
 }
 
 # Loading the required packages
-library(dplyr)
-library(tibble)
-library(purrr)
+library(tidyverse)
 library(OmnipathR)
 #library(openxlsx)
 #library(igraph)

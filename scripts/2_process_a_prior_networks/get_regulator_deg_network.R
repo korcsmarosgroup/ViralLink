@@ -1,0 +1,66 @@
+# Author: Agatha Treveil
+# Date: May 2020
+#
+# Script to get regulator - differentially expressed genes from the contextualised regulatory network
+#
+# Input: Contextualised regulatory network file (all nodes expressed, tab delimited, output from filter_network_expressed_genes.R)
+#           uniprot ids in columns "to" and "from", gene symbols in columns "source_genesymbol" and "target_genesymbol"
+#        Table of differentially expressed genes (csv, output from deseq2)
+#        ID type of the differentially expressed genes - uniprot or gene symbols
+#
+# Output: Network in same format as input network (but tab seperated), filtered to include only interactions where target nodes are differentially expressed.
+
+##### Set up #####
+
+# Install requried packages
+if (!requireNamespace("dplyr", quietly = TRUE)) 
+  install.packages("dplyr")
+
+# Laod required packages
+library(dplyr)
+
+# Define parameters
+args <- commandArgs(trailingOnly = TRUE)
+
+# Output directory
+outdir <- args[1]
+
+# Create output dir if required
+path <- file.path(outdir, "2_process_a_priori_networks")
+dir.create(path, showWarnings = FALSE, recursive=TRUE)
+
+# Contextualised regulatory network
+reg_net <- read.csv(file.path(path, "dorothea_contextualised_network.txt"), sep = "\t")
+
+# Differentially expressed genes (prefiltered)
+diff_genes <- read.csv(file.path(outdir, "1_process_expression_results","deseq2_res_condition_test_vs_control_filtered.csv"))
+
+# ID type of the differentially expressed genes - uniprot or gene symbols
+id_type <- "symbol" # either "uniprot" or "symbol"
+  
+##### Preprocess #####
+
+# Get column names of network to match to the differentially expressed genes (based on id type)
+if(id_type == "symbol"){
+  source_col <- "source_genesymbol"
+  target_col <- "target_genesymbol"
+} else if(id_type == "uniprot"){
+  source_col <- "to"
+  target_col <- "from"
+} else {
+  stop("The differential expression data id type is not correctly specified. Should be \"uniprot\" or \"symbol\"")
+}
+
+##### Filter network #####
+
+# Filter netowrk so all target genes are differentially expressed
+reg_net_f <- reg_net %>% filter(get(target_col) %in% diff_genes$Gene) %>% unique()
+
+# Get list of regulators with number of targeted DEGs
+regs <- reg_net_f %>% dplyr::select(deg_regs = !!source_col) %>% add_count(deg_regs, name = "num_degs") %>% unique()
+
+##### Save #####
+
+write.table(reg_net_f, file = file.path(path,"contextualised_regulator-deg_network.txt"), sep = "\t", quote = F, row.names = F)
+write.table(regs, file = file.path(path, "contextualised_regulators_of_degs.txt"), sep = "\t", quote = F, row.names = F)
+

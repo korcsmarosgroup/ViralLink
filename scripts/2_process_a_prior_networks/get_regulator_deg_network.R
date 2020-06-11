@@ -23,20 +23,20 @@ library(tidyverse)
 args <- commandArgs(trailingOnly = TRUE)
 
 # Output directory
-outdir <- args[1]
+outdir <- args[4]
 
 # Create output dir if required
 path <- file.path(outdir, "2_process_a_priori_networks")
 dir.create(path, showWarnings = FALSE, recursive=TRUE)
 
 # Contextualised regulatory network
-reg_net <- read.csv(file.path(path, "dorothea_contextualised_network.txt"), sep = "\t")
+reg_net <- read.csv(args[1], sep = "\t")
 
 # Differentially expressed genes (prefiltered)
-diff_genes <- read.csv(file.path(outdir, "1_process_expression_results","deseq2_res_condition_test_vs_control_filtered.csv"))
+diff_genes <- read.csv(args[2])
 
 # ID type of the differentially expressed genes - uniprot or gene symbols
-id_type <- "symbol" # either "uniprot" or "symbol"
+id_type <- args[3] # either "uniprot" or "symbol"
   
 ##### Preprocess #####
 

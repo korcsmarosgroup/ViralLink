@@ -34,19 +34,19 @@ library(DESeq2)
 args <- commandArgs(trailingOnly = TRUE)
 
 # Raw counts table
-#counts <- read.csv("/home/balazsbohar/projects/COVID19/covid_stream1/input_files/example_expression_data/GSE147507_RNA_Seq_Raw_Counts.tsv", sep = "\t")
 counts <- read.csv(args[1], sep = "\t")
+
 # Metadata table
-#meta <- read.csv("/home/balazsbohar/projects/COVID19/covid_stream1/input_files/example_expression_data/GSE147507_mapping.txt", sep = "\t")
 meta <- read.csv(args[2], sep = "\t")
-# Output directory
-#outdir <- "/home/balazsbohar/projects/COVID19/covid_stream1/test/"
+
+# Output folder
 outdir <- args[3]
+
 # LFC cut off (>=)
-lfccutoff <- 0.5
+lfccutoff <- as.double(args[4])
 
 # Q val cut off (<=)
-pcutoff <- 0.05
+pcutoff <- as.double(args[5])
 
 ####### Pre-processing ######
 

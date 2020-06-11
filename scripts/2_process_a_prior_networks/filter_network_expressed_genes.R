@@ -20,10 +20,10 @@ library(tidyverse)
 args <- commandArgs(trailingOnly = TRUE)
 
 # Output directory
-outdir <- args[1]
+outdir <- args[5]
 
 # ID type of the  expressed genes - uniprot or gene symbols
-id_type <- "symbol" # symbol or uniprot - the ids in the expression data
+id_type <- args[4] # symbol or uniprot - the ids in the expression data
 
 # Create output dir if required
 path <- file.path(outdir, "2_process_a_priori_networks")
@@ -38,11 +38,14 @@ if (id_type == "symbol"){
 }
 
 # Gene expression file - tab delimited
-expressed <- read.csv(file.path(outdir, "1_process_expression_results", "expressed_genes.txt"), sep = "\t")
+expressed <- read.csv(args[1], sep = "\t")
+dorothea <- args[2]
+omnipath <- args[3]
 
-files <- c("dorothea_abc_signed_directed.txt","omnipath_signed_directed.txt")
+files <- c(dorothea, omnipath)
 
 for (i in files){
+  
   # Network file - space delimited 
   network <- read.csv(file.path(path,"unprocessed_networks", i), sep = " ")
   
@@ -51,6 +54,7 @@ for (i in files){
   
   # Get network name for out filename
   name <- strsplit(i, "_")[[1]][1]
+  
   # Save output
   write.table(network_f, file = file.path(path, paste0(name, "_contextualised_network.txt")), sep = "\t", quote = F, row.names = F)
 }

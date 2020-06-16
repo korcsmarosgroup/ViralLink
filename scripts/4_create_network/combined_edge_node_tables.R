@@ -24,20 +24,15 @@ if (!requireNamespace("org.Hs.eg.db", quietly = TRUE))
 library(tidyverse)
 library(org.Hs.eg.db)
 
-# Define parameters
-args <- commandArgs(trailingOnly = TRUE)
-
 outdir <- args[8]
 
 # Receptor-tf network from tiedie
 rec_tf <- read.csv(args[1], header=F, col.names=c("Source.node","Relationship","Target.node"), sep = "\t")
-
 # Node heats from tiedie
 heats <- read.csv(args[2], sep="=")
 
 # Virus-receptor network
 cov_rec <- read.csv(args[3], sep = "\t")
-
 # SARS-Cov2 gene symbols
 sars <- read.csv(args[4], sep = "\t")
 
@@ -115,7 +110,7 @@ all_nodes <- left_join(all_nodes, id_mapping2, by = c("node"="UNIPROT"))
 sars_sym <- sars %>%dplyr::select(c(node = Accession, gene_symbol))
 all_nodes <- left_join(all_nodes, sars_sym, by = c("node")) %>% mutate(SYMBOL = replace_na(SYMBOL,"")) %>% mutate(gene_symbol = replace_na(as.character(gene_symbol),""))
 all_nodes <-all_nodes %>% mutate(gene_symbol = paste0(SYMBOL, gene_symbol)) %>% dplyr::select(-c(SYMBOL))
-  
+
 # Add node heats from tiedie
 heats$node <- row.names(heats)
 heats$node <- gsub('\\s+', '', heats$node)
@@ -128,7 +123,7 @@ if (id_type == "symbol"){
   lfc2 <- lfc %>% dplyr::select(UNIPROT = X, log2FoldChange, padj)
 }
 all_nodes <- left_join(all_nodes, lfc2)
-  
+
 # Save node table
 write.table(all_nodes, file = file.path(path, "node_table.txt"), sep = "\t", quote = F, row.names = F)
 

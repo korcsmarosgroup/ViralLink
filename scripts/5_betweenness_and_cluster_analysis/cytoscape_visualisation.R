@@ -87,7 +87,7 @@ if(continue){
   if (bet){
     setNodeColorMapping("betweenness_centrality",mapping.type="c", network="causal network")
   }
- 
+  
   # Subnetwork for each cluster
   if (cluster){
     for (i in clus_filt$MCODE_Cluster){

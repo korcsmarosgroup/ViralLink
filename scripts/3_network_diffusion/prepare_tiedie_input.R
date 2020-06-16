@@ -29,7 +29,7 @@ outdir <- args[5]
 # Contextualised PPI network (omnipath) output from 'filter_network_expressed_genes.R'
 ppis <- read.csv(args[1], sep = "\t")
 
-# TF-DEG interactions outptu from 'get_regulator_deg_network.R'
+# TF-DEG interactions output from 'get_regulator_deg_network.R'
 tfs <- read.csv(args[2], sep = "\t")
 
 # Filtered differential expression file output from 'diff_expression_deseq2.R'

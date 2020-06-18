@@ -12,7 +12,7 @@ More detailed information about ViralLink is available in the following paper:
 
 > Treveil A., Bohar B., Sudhakar P. et al. [ViralLink: An integrated workflow to investigate the effect of SARS-CoV-2 on intracellular signalling and regualtory pathways (link) _BioRxiv_ (2020)
 
-<img src="virallink_overview.png" align="center" width="800">
+<img src="virallink_overview.png" align="center" width="500">
 
 ----
 ## Getting Started 

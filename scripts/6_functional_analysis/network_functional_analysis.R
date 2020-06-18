@@ -6,14 +6,14 @@
 # Reactome and Gene ontology BP
 #
 # NB. GO analyses carried out using uniprot IDs, but for the Reactome analysis it is necessary to convert to ENTREZ IDs
-#     All nodes of the cell-type specific PPI network (expressed omnipath) are used as the background for the upstream signalling proteins
-#     All TGs of the cell-type specific TF-TG network (expressed dorothea) are used as the background for the DEGs
+#     All nodes of the contextualised specific PPI network (expressed omnipath) are used as the background for the upstream signalling proteins
+#     All TGs of the contextualised specific TF-TG network (expressed dorothea) are used as the background for the DEGs
 #     significantly overrepresented functions have q val <= 0.05
 #     GO analyses use simplify to remove rudundant function (with parameter 0.1)
 #
 # Input: whole network node file (output from combined_edge_node_tables.R)
-#        background network file for ppis (cell-type specific PPI network output from filter_network_expressed_genes.R)
-#        background network file for degs (cell-type specific TF-TG network output from filter_network_expressed_genes.R)
+#        background network file for ppis (contextualised specific PPI network output from filter_network_expressed_genes.R)
+#        background network file for degs (contextualised specific TF-TG network output from filter_network_expressed_genes.R)
 #        
 # Output: Data table, dot plot and map plot for each overrepresentation analysis
 

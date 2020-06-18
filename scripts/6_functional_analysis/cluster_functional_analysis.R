@@ -2,10 +2,10 @@
 # Date : April 2020
 #
 # Functional analysis of human genes from clusters inside network
-# Overrepresentation analysis - reactome and GO BP - using cell type specific network as background
+# Overrepresentation analysis - reactome and GO BP - using contextualised specific network as background
 #
 # NB. GO analyses carried out using uniprot IDs for the ppi nodes, but for the Reactome analysis it was necessary to convert to ENTREZ
-#     For the overenrichment analysis (q val <= 0.05) it usea all nodes of the cell-type specific networks (expressed omnipath) as the background.
+#     For the overenrichment analysis (q val <= 0.05) it usea all nodes of the contextualised specific networks (expressed omnipath) as the background.
 #     For the GO analyses it uses simplify with parameter 0.1
 #
 # Input: Node table (csv file) output from cytoscape containing the cluster annotations in the column "MCODE_cluster"
@@ -43,7 +43,7 @@ outdir <- args[3]
 # node table containing genes in column gene_symbol and cluster number in 'MCODE_Cluster' - output from 'betweenness_and_clustering.R'
 nodes <- read.csv(args[1], sep ="\t")
 
-# Get background network (cell type specific omnipath)
+# Get background network (contextualised specific omnipath)
 backgr <- read.csv(args[2], sep = "\t")
 
 # Create output dir if required

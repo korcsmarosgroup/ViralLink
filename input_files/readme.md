@@ -27,5 +27,5 @@
 1. example_expression_data/
 	* Unnormalsed counts table (tab delimited) from GSE147507
 	*Metadata table containing condition names for each of the samples in the counts table in the columns "sample_name" and "condition". 
-	*"sample_name" should match the column headers in the counts table.
-	*"condition" should contain "test" or "control" (all other values will be ignored). Differential expression is calculated by comparing "test" samples to "control" samples.
+	  - "sample_name" should match the column headers in the counts table.
+	  - "condition" should contain "test" or "control" (all other values will be ignored). Differential expression is calculated by comparing "test" samples to "control" samples.

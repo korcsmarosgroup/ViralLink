@@ -1,0 +1,4 @@
+sample_name	condition
+sample1	test
+sample2	control
+sample3	test

@@ -1,0 +1,30 @@
+Accession	Source Database	Name	Tax ID	Tax Name	Length	gene_symbol
+A0A663DJA2	unreviewed	ORF10 protein	2697049	Severe acute respiratory syndrome coronavirus 2	38	ORF10
+P0DTC1	reviewed	Replicase polyprotein 1a	2697049	Severe acute respiratory syndrome coronavirus 2	4405	ORF1a
+P0DTC2	reviewed	Spike glycoprotein	2697049	Severe acute respiratory syndrome coronavirus 2	1273	S
+P0DTC3	reviewed	Protein 3a	2697049	Severe acute respiratory syndrome coronavirus 2	275	3a
+P0DTC4	reviewed	Envelope small membrane protein	2697049	Severe acute respiratory syndrome coronavirus 2	75	E
+P0DTC5	reviewed	Membrane protein	2697049	Severe acute respiratory syndrome coronavirus 2	222	M
+P0DTC6	reviewed	Non-structural protein 6	2697049	Severe acute respiratory syndrome coronavirus 2	61	ns6
+P0DTC7	reviewed	Protein 7a	2697049	Severe acute respiratory syndrome coronavirus 2	121	7a
+P0DTC8	reviewed	Non-structural protein 8	2697049	Severe acute respiratory syndrome coronavirus 2	121	ns8
+P0DTC9	reviewed	Nucleoprotein	2697049	Severe acute respiratory syndrome coronavirus 2	419	N
+P0DTD1	reviewed	Replicase polyprotein 1ab	2697049	Severe acute respiratory syndrome coronavirus 2	7096	rep
+P0DTD2	reviewed	Protein 9b	2697049	Severe acute respiratory syndrome coronavirus 2	97	9b
+P0DTD3	reviewed	Uncharacterized protein 14	2697049	Severe acute respiratory syndrome coronavirus 2	73	ORF14
+P0DTD8	reviewed	Protein non-structural 7b	2697049	Severe acute respiratory syndrome coronavirus 2	43	ns7b
+P0DTC1-PRO_0000449645						ORF1a_45
+P0DTD1-PRO_0000449619						rep_19
+P0DTD1-PRO_0000449620						rep_20
+P0DTD1-PRO_0000449621						rep_21
+P0DTD1-PRO_0000449622						rep_22
+P0DTD1-PRO_0000449623						rep_23
+P0DTD1-PRO_0000449624						rep_24
+P0DTD1-PRO_0000449625						rep_25
+P0DTD1-PRO_0000449626						rep_26
+P0DTD1-PRO_0000449627						rep_27
+P0DTD1-PRO_0000449628						rep_28
+P0DTD1-PRO_0000449629						rep_29
+P0DTD1-PRO_0000449630						rep_30
+P0DTD1-PRO_0000449631						rep_31
+P0DTD1-PRO_0000449632						rep_32

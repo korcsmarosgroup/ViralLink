@@ -3,11 +3,10 @@
 Functional overrepresentation analysis of causal networks: upstream signalling proteins (binding proteins-TFs inclusive), and differentially expressed genes (DEGs) seperately. Uses Reactome and Gene ontology BP.
 
 >NB. 
-* GO analyses carried out using uniprot IDs, but for the Reactome analysis it is necessary to convert to ENTREZ IDs
-* All nodes of the cell-type specific PPI network (expressed omnipath) are used as the background for the upstream signalling proteins
-* All TGs of the cell-type specific TF-TG network (expressed dorothea) are used as the background for the DEGs
-significantly overrepresented functions have q val <= 0.05
-* GO analyses use simplify to remove rudundant function (with parameter 0.1)
+>* GO analyses carried out using uniprot IDs, but for the Reactome analysis it is necessary to convert to ENTREZ IDs
+>* All nodes of the cell-type specific PPI network (expressed omnipath) are used as the background for the upstream signalling proteins
+>* All TGs of the cell-type specific TF-TG network (expressed dorothea) are used as the background for the DEGs significantly overrepresented functions have q val <= 0.05
+>* GO analyses use simplify to remove rudundant function (with parameter 0.1)
 
 **Input:**
 
@@ -20,9 +19,9 @@ significantly overrepresented functions have q val <= 0.05
 * Data table, dot plot and map plot for each overrepresentation analysis
 
 **Run from command line:**
-
-> Rscript network_functional_analysis.R node_table.txt contextualised_ppi_network.txt contextualised_tf-tg_network.txt output_directory/
-
+```
+Rscript network_functional_analysis.R node_table.txt contextualised_ppi_network.txt contextualised_tf-tg_network.txt output_directory/
+```
 
 # 2. cluster_functional_analysis.R
 
@@ -30,9 +29,9 @@ Functional analysis of human genes from clusters inside network
 Overrepresentation analysis - reactome and GO BP - using cell type specific network as background
 
 >NB. 
-* GO analyses carried out using uniprot IDs for the ppi nodes, but for the Reactome analysis it was necessary to convert to ENTREZ
-* For the overenrichment analysis (q val <= 0.05) it usea all nodes of the cell-type specific networks (expressed omnipath) as the background.
-* For the GO analyses it uses simplify with parameter 0.1
+>* GO analyses carried out using uniprot IDs for the ppi nodes, but for the Reactome analysis it was necessary to convert to ENTREZ
+>* For the overenrichment analysis (q val <= 0.05) it usea all nodes of the cell-type specific networks (expressed omnipath) as the background.
+>* For the GO analyses it uses simplify with parameter 0.1
 
 **Input:**
 * Node table (csv file) output from cytoscape containing the cluster annotations in the column "MCODE_cluster"

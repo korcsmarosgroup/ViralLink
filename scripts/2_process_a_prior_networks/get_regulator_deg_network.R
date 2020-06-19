@@ -19,7 +19,7 @@ message("\nStarting reg-deg network script: get_regualtor_deg_network.R\n")
 
 # Install required packages
 if (!requireNamespace("tidyverse", quietly = TRUE)) 
-  install.packages("tidyverse")
+  install.packages("tidyverse", repos = "https://cloud.r-project.org")
 
 # Load required packages
 library(tidyverse)

@@ -22,9 +22,9 @@ message("\nStarting network reconstruction: combined_edge_node_tables.R\n")
 
 # Install required packages
 if (!requireNamespace("tidyverse", quietly = TRUE)) 
-  install.packages("tidyverse")
+  install.packages("tidyverse", repos = "https://cloud.r-project.org")
 if (!requireNamespace("org.Hs.eg.db", quietly = TRUE)) 
-  install.packages("org.Hs.eg.db")
+  install.packages("org.Hs.eg.db", repos = "https://cloud.r-project.org")
 
 library(tidyverse)
 library(org.Hs.eg.db)

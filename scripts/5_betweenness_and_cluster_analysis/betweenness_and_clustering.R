@@ -19,13 +19,13 @@ message("\nStarting betweenness + clustering: betweenness_and_clustering.R\n")
 
 # Install requried packages
 if (!requireNamespace("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
+  install.packages("BiocManager", repos = "https://cloud.r-project.org")
 if (!requireNamespace("RCy3", quietly = TRUE)) 
-  BiocManager::install("RCy3")
+  BiocManager::install("RCy3", repos = "https://cloud.r-project.org")
 if (!requireNamespace("tidyverse", quietly = TRUE)) 
-  install.packages("tidyverse")
+  install.packages("tidyverse", repos = "https://cloud.r-project.org")
 if (!requireNamespace("igraph", quietly = TRUE)) 
-  install.packages("igraph")
+  install.packages("igraph", repos = "https://cloud.r-project.org")
 
 # Load packages
 library(tidyverse)

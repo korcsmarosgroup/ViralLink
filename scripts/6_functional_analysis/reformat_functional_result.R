@@ -16,9 +16,9 @@ message("\nStarting reformatting functional results: reformat_functional_result.
 
 # Install requried packages
 if (!requireNamespace("tidyverse", quietly = TRUE)) 
-  install.packages("tidyverse")
+  install.packages("tidyverse", repos = "https://cloud.r-project.org")
 if (!requireNamespace("reshape2", quietly = TRUE)) 
-  install.packages("reshape2")
+  install.packages("reshape2", repos = "https://cloud.r-project.org")
 
 # Load packages
 library(tidyverse)

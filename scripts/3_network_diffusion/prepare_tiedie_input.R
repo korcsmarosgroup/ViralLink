@@ -21,7 +21,7 @@ message("\nStarting tiedie input preparation: prepare_tiedie_input.R\n")
 
 # Install required packages
 if (!requireNamespace("tidyverse", quietly = TRUE)) 
-install.packages("tidyverse")
+install.packages("tidyverse", repos = "https://cloud.r-project.org")
 
 # Load packages
 library(tidyverse)

@@ -17,9 +17,9 @@ message("\nStarting Omnipath/Dorothea download script: Downloading_omnipath_doro
 
 # Installing packages
 if (!requireNamespace("tidyverse", quietly = TRUE)) 
-  install.packages("tidyverse")
+  install.packages("tidyverse", repos = "https://cloud.r-project.org")
 if (!requireNamespace("devtools", quietly = TRUE)) 
-  install.packages("devtools")
+  install.packages("devtools", repos = "https://cloud.r-project.org")
 if(!'OmnipathR' %in% installed.packages()[,"Package"]){
   require(devtools)
   install_github('saezlab/OmnipathR')

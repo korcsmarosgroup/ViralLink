@@ -25,11 +25,11 @@ message("\nStarting differential expression analysis script: diff_expression_des
 
 # Install required packages
 if (!requireNamespace("BiocManager", quietly = TRUE)) 
-  install.packages("BiocManager")
+  install.packages("BiocManager", repos = "https://cloud.r-project.org")
 if (!requireNamespace("DESeq2", quietly = TRUE)) 
-  BiocManager::install("DESeq2")
+  BiocManager::install("DESeq2",repos = "https://cloud.r-project.org")
 if (!requireNamespace("tidyverse", quietly = TRUE)) 
-  install.packages("tidyverse")
+  install.packages("tidyverse",repos = "https://cloud.r-project.org")
 
 # Load required packages
 library(tidyverse)

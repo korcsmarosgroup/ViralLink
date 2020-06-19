@@ -24,15 +24,15 @@ message("\nStarting cluster functional analysis: cluster_functional_analysis.R\n
 
 # Install requried packages
 if (!requireNamespace("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
+  install.packages("BiocManager", repos = "https://cloud.r-project.org")
 if (!requireNamespace("ReactomePA", quietly = TRUE)) 
-  BiocManager::install("ReactomePA")
+  BiocManager::install("ReactomePA", repos = "https://cloud.r-project.org")
 if (!requireNamespace("clusterProfiler", quietly = TRUE)) 
-  BiocManager::install("clusterProfiler")
+  BiocManager::install("clusterProfiler", repos = "https://cloud.r-project.org")
 if (!requireNamespace("tidyverse", quietly = TRUE)) 
-  install.packages("tidyverse")
+  install.packages("tidyverse", repos = "https://cloud.r-project.org")
 if (!requireNamespace("org.Hs.eg.db", quietly = TRUE)) 
-  BiocManager::install("org.Hs.eg.db")
+  BiocManager::install("org.Hs.eg.db", repos = "https://cloud.r-project.org")
 
 # load packages
 library(tidyverse)

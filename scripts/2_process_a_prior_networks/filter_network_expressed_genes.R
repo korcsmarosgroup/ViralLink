@@ -16,7 +16,7 @@ message("\nStarting contextualised network reconstruction: filter_network_expres
 
 # Installing packages
 if (!requireNamespace("tidyverse", quietly = TRUE)) 
-  install.packages("tidyverse")
+  install.packages("tidyverse", repos = "https://cloud.r-project.org")
 
 # Load packages
 library(tidyverse)

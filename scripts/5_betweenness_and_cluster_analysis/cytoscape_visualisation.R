@@ -77,10 +77,10 @@ tryCatch( {msg <- cytoscapePing () } , error = function(e) {cyto_error <<- TRUE}
 
 if (!cyto_error){
   continue = TRUE
-  print('Successfully connected to Cytoscape - continuing with visualisation')
+  message('Successfully connected to Cytoscape - continuing with visualisation')
 } else {
   continue = FALSE
-  print('Could not connect to Cytoscape - skipping visualisation')
+  message('Could not connect to Cytoscape - skipping visualisation')
 }
 
 # Run visualisation if cytoscape open

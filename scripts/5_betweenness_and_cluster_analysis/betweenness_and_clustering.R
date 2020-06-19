@@ -80,7 +80,7 @@ cytoscape_func <- function(i_net){
   
   # Only continue if success installing MCODE, else print error
   if (install_error){
-    print('Error installing MCODE app - skipping MCODE clustering')
+    message('Error installing MCODE app - skipping MCODE clustering')
     clust_res <- ""
   } else {
 
@@ -125,14 +125,14 @@ tryCatch( {msg <- cytoscapePing () } , error = function(e) {cyto_error <<- TRUE}
 if (!cyto_error){
   if (cytoscapeVersionInfo ()[2] >= 3.7){
     continue = TRUE
-    print('Successfully connected to Cytoscape - carrying out MCODE clustering and creating Cytoscape file')
+    message('Successfully connected to Cytoscape - carrying out MCODE clustering and creating Cytoscape file')
   } else {
     continue = FALSE
-    print('Successfully connected to Cytscape BUT version not >= 3.7 - skipping MCODE clustering and creation of Cytoscape file')
+    message('Successfully connected to Cytscape BUT version not >= 3.7 - skipping MCODE clustering and creation of Cytoscape file')
   }
 } else {
   continue = FALSE
-  print('Could not connect to Cytoscape - skipping MCODE clustering and creation of Cytoscape file')
+  message('Could not connect to Cytoscape - skipping MCODE clustering and creation of Cytoscape file')
 }
 
 # Run clustering if cytoscape open and new enough - and RCy3 app new enough (error getting MCODE results if 'its not')

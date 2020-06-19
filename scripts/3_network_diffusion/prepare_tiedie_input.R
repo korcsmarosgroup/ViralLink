@@ -14,6 +14,11 @@
 
 ##### Set up #####
 
+# Capture  messages and errors to a file.
+zz <- file("all.Rout", open="wt")
+sink(zz, type="message", append = TRUE)
+message("Starting tiedie input preparation: prepare_tiedie_input.R\n")
+
 # Install required packages
 if (!requireNamespace("tidyverse", quietly = TRUE)) 
 install.packages("tidyverse")
@@ -23,6 +28,11 @@ library(tidyverse)
 
 # Define parameters
 args <- commandArgs(trailingOnly = TRUE)
+
+# Check length of command line parameters
+if (length(args) != 5){
+  stop("Wrong number of command line input parameters. Please check.")
+}
 
 outdir <- args[5]
 
@@ -93,4 +103,6 @@ tfs4 <- tfs3 %>% mutate(final_val = sumof/n) %>% mutate(sign = ifelse((final_val
 # Save downstream data
 write.table(tfs4, file = file.path(path,"downstream.input"), sep = "\t", col.names = F, row.names = F, quote = F)
 
-
+# reset message sink and close the file connection
+sink(type="message")
+close(zz)

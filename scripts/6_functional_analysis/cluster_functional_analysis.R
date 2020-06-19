@@ -17,6 +17,11 @@
 
 ##### Set up #####
 
+# Capture  messages and errors to a file.
+zz <- file("all.Rout", open="wt")
+sink(zz, type="message", append = TRUE)
+message("Starting cluster functional analysis: cluster_functional_analysis.R\n")
+
 # Install requried packages
 if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
@@ -37,6 +42,11 @@ library(org.Hs.eg.db)
 
 # Define parameters
 args <- commandArgs(trailingOnly = TRUE)
+
+# Check length of command line parameters
+if (length(args) != 3){
+  stop("Wrong number of command line input parameters. Please check.")
+}
 
 outdir <- args[3]
 
@@ -203,3 +213,7 @@ filer <- file.path(path,"all_clusters_reactome_overrep_dot.pdf")
 pdf(filer, width=6)
 print(dotplot_r)
 dev.off()
+
+# reset message sink and close the file connection
+sink(type="message")
+close(zz)

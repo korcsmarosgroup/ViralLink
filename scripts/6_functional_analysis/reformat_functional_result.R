@@ -9,6 +9,11 @@
 
 ### Set up ###
 
+# Capture  messages and errors to a file.
+zz <- file("all.Rout", open="wt")
+sink(zz, type="message", append = TRUE)
+message("Starting reformatting functional results: reformat_functional_result.R\n")
+
 # Install requried packages
 if (!requireNamespace("tidyverse", quietly = TRUE)) 
   install.packages("tidyverse")
@@ -22,6 +27,11 @@ library(reshape2)
 
 # Define parameters
 args <- commandArgs(trailingOnly = TRUE)
+
+# Check length of command line parameters
+if (length(args) != 1){
+  stop("Wrong number of command line input parameters. Please check.")
+}
 
 outdir <- args[1]
 
@@ -66,4 +76,8 @@ for (f in files){
     # Save
     write.table(data3, file = file.path(path, paste0("reformatted_",filen)), sep = "\t", quote=F, row.names = F)
 }
+
+# reset message sink and close the file connection
+sink(type="message")
+close(zz)
 

@@ -20,6 +20,11 @@
 
 ##### Set up #####
 
+# Capture  messages and errors to a file.
+zz <- file("all.Rout", open="wt")
+sink(zz, type="message", append = TRUE)
+message("Starting functional analysis: network_functional_analysis.R\n")
+
 # Install requried packages
 if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
@@ -40,6 +45,11 @@ library(org.Hs.eg.db)
 
 # Define parameters
 args <- commandArgs(trailingOnly = TRUE)
+
+# Check length of command line parameters
+if (length(args) != 4){
+  stop("Wrong number of command line input parameters. Please check.")
+}
 
 outdir <- args[4]
 
@@ -172,3 +182,6 @@ write.table(reactome_res_ppi, file = file.path(path1, "ppis_reactome_overrep_res
 reactome_res_deg <- reactome_overrep(nodes_degs, back_nodes_deg, "degs","UNIPROT",path2)
 write.table(reactome_res_deg, file = file.path(path2, "degs_reactome_overrep_results.txt"), quote = FALSE, row.names = FALSE, sep = "\t")
 
+# reset message sink and close the file connection
+sink(type="message")
+close(zz)

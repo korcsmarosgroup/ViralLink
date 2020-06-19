@@ -12,6 +12,11 @@
 
 ##### Setup #####
 
+# Capture  messages and errors to a file.
+zz <- file("all.Rout", open="wt")
+sink(zz, type="message", append = TRUE)
+message("Starting betweenness + clustering: betweenness_and_clustering.R\n")
+
 # Install requried packages
 if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
@@ -29,6 +34,11 @@ library(igraph)
 
 # Define parameters
 args <- commandArgs(trailingOnly = TRUE)
+
+# Check length of command line parameters
+if (length(args) != 3){
+  stop("Wrong number of command line input parameters. Please check.")
+}
 
 outdir <- args[3]
 
@@ -153,3 +163,6 @@ if(continue & (packageVersion("RCy3") >= "2.6.0")){
 # Save updated node table
 write.table(nodes_3, file=file.path(path, "node_table_betweenness_clusters.txt"), row.names = FALSE, quote = FALSE, sep = "\t")
 
+# reset message sink and close the file connection
+sink(type="message")
+close(zz)

@@ -15,6 +15,11 @@
 
 ##### Setup #####
 
+# Capture  messages and errors to a file.
+zz <- file("all.Rout", open="wt")
+sink(zz, type="message", append = TRUE)
+message("Starting network reconstruction: combined_edge_node_tables.R\n")
+
 # Install required packages
 if (!requireNamespace("tidyverse", quietly = TRUE)) 
   install.packages("tidyverse")
@@ -23,6 +28,14 @@ if (!requireNamespace("org.Hs.eg.db", quietly = TRUE))
 
 library(tidyverse)
 library(org.Hs.eg.db)
+
+# Define parameters
+args <- commandArgs(trailingOnly = TRUE)
+
+# Check length of command line parameters
+if (length(args) != 8){
+  stop("Wrong number of command line input parameters. Please check.")
+}
 
 outdir <- args[8]
 
@@ -126,4 +139,8 @@ all_nodes <- left_join(all_nodes, lfc2)
 
 # Save node table
 write.table(all_nodes, file = file.path(path, "node_table.txt"), sep = "\t", quote = F, row.names = F)
+
+# reset message sink and close the file connection
+sink(type="message")
+close(zz)
 

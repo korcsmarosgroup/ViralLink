@@ -10,6 +10,11 @@
 #
 ##### Setup #####
 
+# Capture  messages and errors to a file.
+zz <- file("all.Rout", open="wt")
+sink(zz, type="message", append = TRUE)
+message("Starting Omnipath/Dorothea download script: Downloading_omnipath_dorothea.R\n")
+
 # Installing packages
 if (!requireNamespace("tidyverse", quietly = TRUE)) 
   install.packages("tidyverse")
@@ -23,12 +28,14 @@ if(!'OmnipathR' %in% installed.packages()[,"Package"]){
 # Loading the required packages
 library(tidyverse)
 library(OmnipathR)
-#library(openxlsx)
-#library(igraph)
-#library(qgraph)
 
 # Define parameters
 args <- commandArgs(trailingOnly = TRUE)
+
+# Check length of command line parameters
+if (length(args) != 1){
+  stop("Wrong number of command line input parameters. Please check.")
+}
 
 outdir <- args[1]
 
@@ -117,3 +124,6 @@ write_graph(ia_transcriptional2, paste0(path, "/directed_human_TF_targets.ncol")
 human_tf_data_filtered = as_data_frame(ia_transcriptional2, what = "edges")
 write.table(human_tf_data_filtered, paste0(path,"/dorothea_abc_signed_directed.txt"))
 
+## reset message sink and close the file connection
+sink(type="message")
+close(zz)

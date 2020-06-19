@@ -11,6 +11,11 @@
 
 ##### Setup #####
 
+# Capture  messages and errors to a file.
+zz <- file("all.Rout", open="wt")
+sink(zz, type="message", append = TRUE)
+message("Starting visualisation: cytoscape_visualisation.R\n")
+
 # Install required packages
 if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
@@ -25,6 +30,11 @@ library(RCy3)
 
 # Define parameters
 args <- commandArgs(trailingOnly = TRUE)
+
+# Check length of command line parameters
+if (length(args) != 3){
+  stop("Wrong number of command line input parameters. Please check.")
+}
 
 # Output directory
 outdir <- args[3]
@@ -102,3 +112,7 @@ if(continue){
   # Save cys file
   saveSession(filename = file.path(path, "causal_network.cys"))
 }
+
+# reset message sink and close the file connection
+sink(type="message")
+close(zz)

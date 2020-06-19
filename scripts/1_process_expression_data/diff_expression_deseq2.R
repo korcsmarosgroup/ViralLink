@@ -18,6 +18,11 @@
 
 ####### Set up ######
 
+# Capture  messages and errors to a file.
+zz <- file("all.Rout", open="wt")
+sink(zz, type="message", append = TRUE)
+message("Starting differential expression analysis script: diff_expression_deseq2.R\n")
+
 # Install required packages
 if (!requireNamespace("BiocManager", quietly = TRUE)) 
   install.packages("BiocManager")
@@ -32,6 +37,11 @@ library(DESeq2)
 
 # Define parameters
 args <- commandArgs(trailingOnly = TRUE)
+
+# Check length of command line parameters
+if (length(args) != 5){
+  stop("Wrong number of command line input parameters. Please check.")
+}
 
 # Raw counts table
 counts <- read.csv(args[1], sep = "\t")
@@ -107,3 +117,7 @@ write.csv(as.data.frame(results), file=file.path(outdir, "1_process_expression_r
 results_filt <- as.data.frame(results) %>% tibble::rownames_to_column('Gene') %>% filter((padj <= pcutoff)&((log2FoldChange >= lfccutoff)|(log2FoldChange <= -lfccutoff)))
 out_file2 <- paste0("deseq2_res_", comparison_name[2], "_filtered.csv")
 write.csv(results_filt, file=file.path(outdir, "1_process_expression_results", file=out_file2), row.names = FALSE)
+
+# reset message sink and close the file connection
+sink(type="message")
+close(zz)

@@ -12,6 +12,11 @@
 
 ##### Set up #####
 
+# Capture  messages and errors to a file.
+zz <- file("all.Rout", open="wt")
+sink(zz, type="message", append = TRUE)
+message("Starting reg-deg network script: get_regualtor_deg_network.R\n")
+
 # Install required packages
 if (!requireNamespace("tidyverse", quietly = TRUE)) 
   install.packages("tidyverse")
@@ -21,6 +26,11 @@ library(tidyverse)
 
 # Define parameters
 args <- commandArgs(trailingOnly = TRUE)
+
+# Check length of command line parameters
+if (length(args) != 4){
+  stop("Wrong number of command line input parameters. Please check.")
+}
 
 # Output directory
 outdir <- args[4]
@@ -64,3 +74,6 @@ regs <- reg_net_f %>% dplyr::select(deg_regs = !!source_col) %>% add_count(deg_r
 write.table(reg_net_f, file = file.path(path,"contextualised_regulator-deg_network.txt"), sep = "\t", quote = F, row.names = F)
 write.table(regs, file = file.path(path, "contextualised_regulators_of_degs.txt"), sep = "\t", quote = F, row.names = F)
 
+# reset message sink and close the file connection
+sink(type="message")
+close(zz)

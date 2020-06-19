@@ -1,13 +1,11 @@
-#README
-
-##Input files provided for the workflow:
+## Input files provided for the workflow:
 
 0. The user should provide a raw counts table with sample names as column headers and gene names (gene symbol or UniProt) as row names. (see 'example_expression_data' for an example)
 
 1. empty_mapping_table.txt
-	*This example mapping table to be completed with the information based on the provided expression data
-	*The table should contain one row per input sample
-	*"sample_name" column should contain the sample name matching the relevant column header in the counts table.
+	* This example mapping table to be completed with the information based on the provided expression data
+	* The table should contain one row per input sample
+	* "sample_name" column should contain the sample name matching the relevant column header in the counts table.
 	*"condition" column should contain "test" or "control"  depending on whether the sample is a test or control sample (all other values will be ignored). Differential expression is calculated by comparing "test" samples to "control" samples.
 
 2. sarscov2-human_ppis_gordon_april2020.txt
@@ -22,7 +20,7 @@
 	*This file contains Reactome associations for all human UniProt IDs. It was downloaded from the Reactome website on 30th April 2020 and reformated to contain 2 columns: uniprot id column "gene" and a column of Reactome pathway names seperated by ";", named "reactome". The file is tab delimited.
 
 
-##Also provided to help determine the correct input formats of expression data:
+## Also provided to help determine the correct input formats of expression data:
 
 1. example_expression_data/
 	* Unnormalsed counts table (tab delimited) from GSE147507

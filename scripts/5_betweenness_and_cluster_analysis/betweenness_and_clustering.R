@@ -13,9 +13,9 @@
 ##### Setup #####
 
 # Capture  messages and errors to a file.
-zz <- file("all.Rout", open="wt")
+zz <- file("all.Rout", open="a")
 sink(zz, type="message", append = TRUE)
-message("Starting betweenness + clustering: betweenness_and_clustering.R\n")
+message("\nStarting betweenness + clustering: betweenness_and_clustering.R\n")
 
 # Install requried packages
 if (!requireNamespace("BiocManager", quietly = TRUE))

@@ -15,9 +15,9 @@
 ##### Set up #####
 
 # Capture  messages and errors to a file.
-zz <- file("all.Rout", open="wt")
+zz <- file("all.Rout", open="a")
 sink(zz, type="message", append = TRUE)
-message("Starting tiedie input preparation: prepare_tiedie_input.R\n")
+message("\nStarting tiedie input preparation: prepare_tiedie_input.R\n")
 
 # Install required packages
 if (!requireNamespace("tidyverse", quietly = TRUE)) 

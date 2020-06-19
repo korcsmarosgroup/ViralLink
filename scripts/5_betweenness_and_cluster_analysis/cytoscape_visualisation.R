@@ -12,9 +12,9 @@
 ##### Setup #####
 
 # Capture  messages and errors to a file.
-zz <- file("all.Rout", open="wt")
+zz <- file("all.Rout", open="a")
 sink(zz, type="message", append = TRUE)
-message("Starting visualisation: cytoscape_visualisation.R\n")
+message("\nStarting visualisation: cytoscape_visualisation.R\n")
 
 # Install required packages
 if (!requireNamespace("BiocManager", quietly = TRUE))

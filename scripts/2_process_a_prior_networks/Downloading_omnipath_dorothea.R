@@ -11,9 +11,9 @@
 ##### Setup #####
 
 # Capture  messages and errors to a file.
-zz <- file("all.Rout", open="wt")
+zz <- file("all.Rout", open="a")
 sink(zz, type="message", append = TRUE)
-message("Starting Omnipath/Dorothea download script: Downloading_omnipath_dorothea.R\n")
+message("\nStarting Omnipath/Dorothea download script: Downloading_omnipath_dorothea.R\n")
 
 # Installing packages
 if (!requireNamespace("tidyverse", quietly = TRUE)) 

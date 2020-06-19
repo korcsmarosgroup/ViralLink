@@ -19,9 +19,9 @@
 ####### Set up ######
 
 # Capture  messages and errors to a file.
-zz <- file("all.Rout", open="wt")
+zz <- file("all.Rout", open="a")
 sink(zz, type="message", append = TRUE)
-message("Starting differential expression analysis script: diff_expression_deseq2.R\n")
+message("\nStarting differential expression analysis script: diff_expression_deseq2.R\n")
 
 # Install required packages
 if (!requireNamespace("BiocManager", quietly = TRUE)) 

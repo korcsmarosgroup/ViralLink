@@ -10,9 +10,9 @@
 # Output: Networks in same format as input network (but tab seperated), filtered to include only interactions where source and target node are in the expressed list.
 
 # Capture  messages and errors to a file.
-zz <- file("all.Rout", open="wt")
+zz <- file("all.Rout", open="a")
 sink(zz, type="message", append = TRUE)
-message("Starting contextualised network reconstruction: filter_network_expressed_genes.R\n")
+message("\nStarting contextualised network reconstruction: filter_network_expressed_genes.R\n")
 
 # Installing packages
 if (!requireNamespace("tidyverse", quietly = TRUE)) 

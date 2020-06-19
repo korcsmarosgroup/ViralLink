@@ -16,9 +16,9 @@
 ##### Setup #####
 
 # Capture  messages and errors to a file.
-zz <- file("all.Rout", open="wt")
+zz <- file("all.Rout", open="a")
 sink(zz, type="message", append = TRUE)
-message("Starting network reconstruction: combined_edge_node_tables.R\n")
+message("\nStarting network reconstruction: combined_edge_node_tables.R\n")
 
 # Install required packages
 if (!requireNamespace("tidyverse", quietly = TRUE)) 

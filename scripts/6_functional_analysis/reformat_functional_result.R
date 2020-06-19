@@ -10,9 +10,9 @@
 ### Set up ###
 
 # Capture  messages and errors to a file.
-zz <- file("all.Rout", open="wt")
+zz <- file("all.Rout", open="a")
 sink(zz, type="message", append = TRUE)
-message("Starting reformatting functional results: reformat_functional_result.R\n")
+message("\nStarting reformatting functional results: reformat_functional_result.R\n")
 
 # Install requried packages
 if (!requireNamespace("tidyverse", quietly = TRUE)) 

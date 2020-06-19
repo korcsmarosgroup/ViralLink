@@ -13,9 +13,9 @@
 ##### Set up #####
 
 # Capture  messages and errors to a file.
-zz <- file("all.Rout", open="wt")
+zz <- file("all.Rout", open="a")
 sink(zz, type="message", append = TRUE)
-message("Starting reg-deg network script: get_regualtor_deg_network.R\n")
+message("\nStarting reg-deg network script: get_regualtor_deg_network.R\n")
 
 # Install required packages
 if (!requireNamespace("tidyverse", quietly = TRUE)) 

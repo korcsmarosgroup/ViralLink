@@ -67,7 +67,7 @@ if(id_type == "symbol"){
 reg_net_f <- reg_net %>% filter(get(target_col) %in% diff_genes$Gene) %>% unique()
 
 # Get list of regulators with number of targeted DEGs
-regs <- reg_net_f %>% dplyr::select(deg_regs = !!source_col) %>% add_count(deg_regs, name = "num_degs") %>% unique()
+regs <- reg_net_f %>% select(deg_regs = !!source_col) %>% add_count(deg_regs, name = "num_degs") %>% unique()
 
 ##### Save #####
 

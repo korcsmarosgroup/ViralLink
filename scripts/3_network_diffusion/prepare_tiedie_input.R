@@ -57,7 +57,7 @@ dir.create(path, showWarnings = FALSE, recursive=TRUE)
 
 # Convert to sif format
 ppis2 <- ppis %>% mutate(direction = ifelse(consensus_stimulation == "1", "stimulates>", "inhibits>")) %>%
-  dplyr::select(c(from,direction, to)) %>%
+  select(c(from,direction, to)) %>%
   unique()
 
 # Save pathways
@@ -69,17 +69,17 @@ write.table(ppis2, file = file.path(path,"pathway.sif"), sep = "\t", col.names =
 # If sign of interaction given then use it, else assume all inhibitory ("-")
 if ("sign" %in% colnames(hbps)){
   # Check values in sign column are "-" or "+"
-  hbps_f <- hbps %>% dplyr::filter((sign == "-") | (sign == "+"))
+  hbps_f <- hbps %>% filter((sign == "-") | (sign == "+"))
   if (nrow(hbps_f) != nrow(hbps)){
     print("WARNING: Some of the viral-human binding protein interactions were disgarded as the values in the 'sign' column were not '+' or '-'.")
   }
   if (nrow(hbps_f) == 0){
     stop("ERROR: viral-human binding protein interactions do not have the correct values in 'sign' column. They should be '+' or '-'.")
   }
-  hbps2 <- hbps %>% dplyr::select(human_protein, sign) %>% rename(direction=sign) %>% group_by(human_protein,direction) %>% summarise(n = n()) %>%
+  hbps2 <- hbps %>% select(human_protein, sign) %>% dplyr::rename(direction=sign) %>% group_by(human_protein,direction) %>% summarise(n = n()) %>%
     select(human_protein, n, direction)
 } else {
-  hbps2 <- hbps %>% dplyr::select(human_protein) %>% group_by(human_protein) %>% summarise(n = n()) %>% mutate(direction = "-")
+  hbps2 <- hbps %>% select(human_protein) %>% group_by(human_protein) %>% summarise(n = n()) %>% mutate(direction = "-")
 }
 
 # Save upstream data
@@ -90,15 +90,15 @@ write.table(hbps2, file = file.path(path,"upstream.input"), sep = "\t", col.name
 # (1/#targetgenes) * sum(lfc(targetgene)*signofint)
 
 # Join the tf-deg network with the deg lfc values
-tfs2 <- left_join(tfs, degs, by =c("target_genesymbol"="Gene")) %>% dplyr::select(c(from, to, consensus_stimulation, log2FoldChange)) %>%
+tfs2 <- left_join(tfs, degs, by =c("target_genesymbol"="Gene")) %>% select(c(from, to, consensus_stimulation, log2FoldChange)) %>%
   mutate(lfc_sign = ifelse(consensus_stimulation == "1", log2FoldChange, -log2FoldChange))
 
 # Get the sum of all lfc*sign values - and the number of target genes for each tf
-tfs3 <- tfs2 %>% dplyr::select(from, lfc_sign) %>% group_by(from) %>% summarise(sumof = sum(lfc_sign), n = n())
+tfs3 <- tfs2 %>% select(from, lfc_sign) %>% group_by(from) %>% summarise(sumof = sum(lfc_sign), n = n())
 
 # Divide sumof by n and determine sign (based on sign of the value)
 tfs4 <- tfs3 %>% mutate(final_val = sumof/n) %>% mutate(sign = ifelse((final_val >= 0), "+", "-")) %>%
-  dplyr::select(from, final_val, sign)
+  select(from, final_val, sign)
 
 # Save downstream data
 write.table(tfs4, file = file.path(path,"downstream.input"), sep = "\t", col.names = F, row.names = F, quote = F)

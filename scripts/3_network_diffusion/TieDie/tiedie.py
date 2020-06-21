@@ -30,7 +30,6 @@
 from __future__ import print_function
 from __future__ import division
 import os, sys
-from collections import defaultdict
 from optparse import OptionParser
 parser = OptionParser()
 ##
@@ -70,7 +69,7 @@ Number of random permutations performed for significance analysis (default 1000)
 parser.add_option("--pagerank",dest="pagerank",action="store_true",default=False,
 help="Use Personalized PageRank to Diffuse")
 parser.add_option("--all_paths",dest="all_paths",action="store_true",default=False)
-parser.add_option("--output_folder",dest="output_folder",action="store",default='TieDIE')
+parser.add_option("-o", "--output_folder",dest="output_folder",action="store")
 (opts, args) = parser.parse_args()
 
 # local imports assume the directory structure from github .
@@ -79,7 +78,6 @@ sys.path.append(script_directory.replace("bin","lib"))
 from kernel import Kernel
 from ppr import PPrDiffuser
 from permute import NetBalancedPermuter
-from tiedie_util import *
 from master_reg import *
 from os import path
 import pickle

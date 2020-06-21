@@ -7,7 +7,7 @@ import math
 import random
 from scipy import stats
 import numpy as np
-from distributions import Dist
+
 
 class ActivityScores:
 	"""

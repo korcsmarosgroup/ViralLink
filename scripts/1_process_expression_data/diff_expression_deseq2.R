@@ -93,7 +93,7 @@ dds <- DESeq(dds)
 ##### Save output ######
 
 # Create output dir
-dir.create(file.path(outdir, "1_process_expression_results"), showWarnings = FALSE)
+dir.create(file.path(outdir, "1_process_expression_results"), showWarnings = FALSE, recursive = TRUE)
 
 # See the comparisons carried out
 comparison_name <- resultsNames(dds)

@@ -120,7 +120,7 @@ python3 virallink.py
 
 ### Debugging
 
-* The wrapper outputs command line messages, warnings and errors to the file *virallink.Out*. Open this in a text editor to try to identify issues with the workflow.
+* The wrapper outputs command line messages, warnings and errors to the file *virallink.out*. Open this in a text editor to try to identify issues with the workflow.
 
 * Make sure that the *virallink.py* script is being run in Python 3 and from the main directory of the ViralLink repository. Make sure none of the folders of files have been renamed or moved.
 

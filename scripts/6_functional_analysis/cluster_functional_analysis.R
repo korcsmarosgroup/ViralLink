@@ -18,7 +18,7 @@
 ##### Set up #####
 
 # Capture  messages and errors to a file.
-zz <- file("all.Rout", open="a")
+zz <- file("virallink.out", open="a")
 sink(zz, type="message", append = TRUE)
 message("\nStarting cluster functional analysis: cluster_functional_analysis.R\n")
 

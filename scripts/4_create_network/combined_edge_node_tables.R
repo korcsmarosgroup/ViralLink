@@ -16,7 +16,7 @@
 ##### Setup #####
 
 # Capture  messages and errors to a file.
-zz <- file("all.Rout", open="a")
+zz <- file("virallink.out", open="a")
 sink(zz, type="message", append = TRUE)
 message("\nStarting network reconstruction: combined_edge_node_tables.R\n")
 

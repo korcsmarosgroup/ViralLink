@@ -57,13 +57,14 @@ files <- c(dorothea, omnipath)
 for (i in files){
   
   # Network file - space delimited 
-  network <- read.csv(file.path(outdir, i), sep = " ")
+  network <- read.csv(file.path(i), sep = " ")
   
   # Filter source and target nodes
   network_f <- network %>% filter((get(source_col) %in% expressed$Gene) & (get(target_col) %in% expressed$Gene))
   
   # Get network name for out filename
-  name <- strsplit(i, "_")[[1]][1]
+  file <- strsplit(i, "/")[[1]][4]
+  name <- strsplit(file, "_")[[1]][1]
   
   # Save output
   write.table(network_f, file = file.path(path, paste0(name, "_contextualised_network.txt")), sep = "\t", quote = F, row.names = F)

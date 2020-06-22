@@ -45,7 +45,7 @@ rec_tf <- read.csv(args[1], header=F, col.names=c("Source.node","Relationship","
 heats <- read.csv(args[2], sep="=")
 
 # Virus-receptor network
-cov_rec <- read.csv(args[3], sep = "\t")
+hbps <- read.csv(args[3], sep = "\t")
 # SARS-Cov2 gene symbols
 sars <- read.csv(args[4], sep = "\t")
 
@@ -66,14 +66,14 @@ dir.create(path, showWarnings = FALSE, recursive=TRUE)
 
 rec_tf2 <- rec_tf %>% mutate(layer= "bindingprot-tf") 
 
-if("sign" %in% colnames(cov_rec)){
-  cov_rec2 <- cov_rec %>% mutate(Relationship = ifelse(sign == "-","inhibits>", ifelse(sign=="+", "stimulates>", "unknown")))  %>%
+if("sign" %in% colnames(hbps)){
+  hbps2 <- hbps %>% mutate(Relationship = ifelse(sign == "-","inhibits>", ifelse(sign=="+", "stimulates>", "unknown")))  %>%
     select(-c(sign)) %>%
     mutate(layer = "cov-bindingprot") %>%
     dplyr::rename(Source.node = viral_protein, Target.node = human_protein) %>%
     filter(Target.node %in% rec_tf2$Source.node)
 } else {
-  cov_rec2 <- cov_rec %>% mutate(Relationship = "unknown", layer = "cov-bindingprot") %>%
+  hbps2 <- hbps %>% mutate(Relationship = "unknown", layer = "cov-bindingprot") %>%
     dplyr::rename(Source.node = viral_protein, Target.node = human_protein) %>%
     filter(Target.node %in% rec_tf2$Source.node)
 }
@@ -85,7 +85,7 @@ tf_deg2 <- tf_deg %>% mutate(layer = "tf-deg") %>%
   mutate(Relationship = str_replace(Relationship, "0", "inhibits>"))
 
 # Join together
-whole_net <- rbind(cov_rec2, rec_tf2, tf_deg2) %>% unique()
+whole_net <- rbind(hbps2, rec_tf2, tf_deg2) %>% unique()
 
 # Save
 write.table(whole_net, file = file.path(path, "final_network.txt"), sep = "\t", quote = F, row.names = F)

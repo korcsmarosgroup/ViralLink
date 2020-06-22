@@ -6,11 +6,11 @@ ViralLink is a systems biology workflow which reconstructs and analyses networks
 
 These networks trace the flow of signal from intracellular viral proteins through their human binding proteins and downstream signalling pathways, ending with transcription factors regulating genes differentially expressed upon viral exposure. In this way, the workflow provides a mechanistic insight from previously identified knowledge of virally infected cells. By default, the workflow is set up to analyse the intracellular effects of SARS-CoV-2, requiring only transcriptomics counts data as input from the user: thus encouraging and enabling rapid multidisciplinary research. However, the wide ranging applicability and modularity of the workflow facilitates customisation of viral context, *a priori* interactions and analysis methods.
 
-ViralLink is currently available as a series of R and Python scripts which can be run seperately from the command line - to enable flexibility - or through a Bash wrapper script created for easy accessibility.
+ViralLink is currently available as a series of R and Python scripts which can be run seperately from the command line - to enable flexibility - or through a Python wrapper script created for easy accessibility.
 
 More detailed information about ViralLink is available in the following paper:
 
-> Treveil A., Bohar B., Sudhakar P. et al. [ViralLink: An integrated workflow to investigate the effect of SARS-CoV-2 on intracellular signalling and regualtory pathways] (link) _BioRxiv_ (2020)
+> Treveil A., Bohar B., Sudhakar P. et al. [ViralLink: An integrated workflow to investigate the effect of SARS-CoV-2 on intracellular signalling and regualtory pathways] _BioRxiv_ (2020)
 
 <img src="virallink_overview.png" align="center" width="500">
 
@@ -50,11 +50,11 @@ Neworkx
 
 ### Inputs to ViralLink
 
-All input files and parameters should be specified by editing the **BLANK** file using a text editor.
+All input files and parameters should be specified by editing the *parameters.tsv* file using a text editor. Here the only lines which need to be completed are 2 (coutns table), 3 (metadata table) and 4 (output directory). 4,8,9,14,18, 23,36
 
 **The input files for ViralLink are as follows:**
 
-1. A unnormalsied counts table from a human transcriptomics study. Genes (using gene symbols or UniProt protein IDs) as rows and samples as columns.  (REQUIRED FROM USER)
+1. An unnormalsied counts table from a human transcriptomics study. Genes (using gene symbols or UniProt protein IDs) as rows and samples as columns.  (REQUIRED FROM USER)
 
 2. A tab-delimited two-column metadata table specifying test and control sample IDs in the following format. Here the sample names must match the headers in the normalised counts table. For an example metadata file see the *input_data* folder.  (REQUIRED FROM USER)
 
@@ -77,7 +77,7 @@ All input files and parameters should be specified by editing the **BLANK** file
 	- At least 2 columns named *Accession* and *gene_symbol*
 
 5. Reactome annotations for all human UniProt IDs
-	- Only required for the *filter_networks_by_functions.R* script (which is not part of the Bash wrapper)
+	- Only required for the *filter_networks_by_functions.R* script (which is not part of the Python wrapper)
 	- Provided based on data downloaded from Reactome on 30/04/2020: *input_files/reactome_annotations_uniprot_300420.txt*
 	- Tab-delimited text file with 2 columns: uniprot id column "gene" and a column of Reactome pathway names seperated by ";", named "reactome"
 	
@@ -90,7 +90,7 @@ All input files and parameters should be specified by editing the **BLANK** file
 	- Genes must have adjusted p value (from differential expression analysis) less than than or equal to this value to be differentially expressed
 	
 3. Type of ID in the input expression data
-	-  Must be "symbol" (for gene symbols) or UniProt (for Uniprot IDs)
+	-  Must be *symbol* (for gene symbols) or *uniprot* (for Uniprot IDs)
 
 ----
 ## Running ViralLink
@@ -103,7 +103,7 @@ cd folder/to/clone-into/
 git clone https://https://github.com/korcsmarosgroup/viral_intracellular_networks
 ```
 
-### Run Bash wrapper
+### Run Python wrapper
 
 ```
 

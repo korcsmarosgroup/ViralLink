@@ -57,7 +57,7 @@ files <- c(dorothea, omnipath)
 for (i in files){
   
   # Network file - space delimited 
-  network <- read.csv(file.path(path,"unprocessed_networks", i), sep = " ")
+  network <- read.csv(file.path(outdir, i), sep = " ")
   
   # Filter source and target nodes
   network_f <- network %>% filter((get(source_col) %in% expressed$Gene) & (get(target_col) %in% expressed$Gene))

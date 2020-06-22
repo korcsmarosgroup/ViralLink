@@ -43,14 +43,17 @@ naniar
 ```
 scipy (≥ 0.12.0)
 numpy (≥ 1.7)
-math
-os
-Neworkx
+networkx
+distributions
 ```
 
 ### Inputs to ViralLink
 
-All input files and parameters should be specified by editing the *parameters.tsv* file using a text editor. Here the only lines which need to be completed are 2 (coutns table), 3 (metadata table) and 4 (output directory). 4,8,9,14,18, 23,36
+When running the workflow using the wrapper script (*virallink.py*), all input files and parameters should be specified by editing the *parameters.tsv* file using a text editor. For description of these parameters, see the *parameter_descriptions.txt* file. 
+> NB. Do not edit the parameter names in the *parameters.tsv* file. File paths can be relative and "/"'s are not required at the beginning and end of the paths.
+> NB. The wrapper will run all scripts in step 1 -> step 6 inclusive. The only script not run is step 7, as it requires interpretation of the results for the purpose of selecting functions of interest to visualise.
+
+If the user would like to run the scripts seperately from the workflow wrapper, each script should be run from the command line, specifying the required input parameters. The parameters for each script can be found in the *Scripts/all_parameters.tsv* file and in the script *readme.md* files.
 
 **The input files for ViralLink are as follows:**
 
@@ -81,7 +84,7 @@ All input files and parameters should be specified by editing the *parameters.ts
 	- Provided based on data downloaded from Reactome on 30/04/2020: *input_files/reactome_annotations_uniprot_300420.txt*
 	- Tab-delimited text file with 2 columns: uniprot id column "gene" and a column of Reactome pathway names seperated by ";", named "reactome"
 	
-**Addition required parameters:**
+**Additional required parameters:**
 
 1. Log2 fold change cut off 
 	- Genes must have log2 fold change more than or equal the modulus of this value to be differentially expressed
@@ -104,12 +107,24 @@ git clone https://https://github.com/korcsmarosgroup/viral_intracellular_network
 ```
 
 ### Run Python wrapper
+Make sure to navigate to the repository main directory before running the script. Do not change the folder structure or file names.
+
+> NB. Ensure the *parameters.tsv* file has been edited prior to running the script.
 
 ```
-
+cd folder/to/clone-into/ViralLink
+python3 virallink.py
 ```
 
 ### Debugging
+
+The wrapper outputs command line messages, warnings and errors to the file *virallink.Out*. Open this in a text editor to try to identify issues with the workflow.
+
+Make sure that the *virallink.py* script is being run in Python 3 and from the main directory of the ViralLink repository. Make sure none of the folders of files have been renamed or moved.
+
+Ensure that the layout of the *parameters.tsv* file and the parameter names have not been altered. Regarding the specified parameters, make sure that the file paths are reachable from the main directory of the ViralLink repository.
+
+The wrapper should install all required packages, but this isn't always possible and will cause errors running the workflow. Try to install all required packages (see section above) prior to running the wrapper.
 
 ----
 ## Outputs of ViralLink

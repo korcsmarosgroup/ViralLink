@@ -50,7 +50,8 @@ distributions
 ### Inputs to ViralLink
 
 When running the workflow using the wrapper script (*virallink.py*), all input files and parameters should be specified by editing the *parameters.tsv* file using a text editor. For description of these parameters, see the *parameter_descriptions.txt* file. 
-> NB. Do not edit the parameter names in the *parameters.tsv* file. File paths can be relative and "/"'s are not required at the beginning and end of the paths.
+> NB. Do not edit the parameter names in the *parameters.tsv* file. File paths can be relative and slashes are not required at the beginning and end of the paths.
+
 > NB. The wrapper will run all scripts in step 1 -> step 6 inclusive. The only script not run is step 7, as it requires interpretation of the results for the purpose of selecting functions of interest to visualise.
 
 If the user would like to run the scripts seperately from the workflow wrapper, each script should be run from the command line, specifying the required input parameters. The parameters for each script can be found in the *Scripts/all_parameters.tsv* file and in the script *readme.md* files.
@@ -109,7 +110,7 @@ git clone https://https://github.com/korcsmarosgroup/viral_intracellular_network
 ### Run Python wrapper
 Make sure to navigate to the repository main directory before running the script. Do not change the folder structure or file names.
 
-> NB. Ensure the *parameters.tsv* file has been edited prior to running the script.
+> NB. Ensure the *parameters.tsv* file have been edited prior to running the script (unless you're running the example input data).
 
 ```
 cd folder/to/clone-into/ViralLink
@@ -118,13 +119,13 @@ python3 virallink.py
 
 ### Debugging
 
-The wrapper outputs command line messages, warnings and errors to the file *virallink.Out*. Open this in a text editor to try to identify issues with the workflow.
+* The wrapper outputs command line messages, warnings and errors to the file *virallink.Out*. Open this in a text editor to try to identify issues with the workflow.
 
-Make sure that the *virallink.py* script is being run in Python 3 and from the main directory of the ViralLink repository. Make sure none of the folders of files have been renamed or moved.
+* Make sure that the *virallink.py* script is being run in Python 3 and from the main directory of the ViralLink repository. Make sure none of the folders of files have been renamed or moved.
 
-Ensure that the layout of the *parameters.tsv* file and the parameter names have not been altered. Regarding the specified parameters, make sure that the file paths are reachable from the main directory of the ViralLink repository.
+* Ensure that the layout of the *parameters.tsv* file and the parameter names have not been altered. Regarding the specified parameters, make sure that the file paths are reachable from the main directory of the ViralLink repository.
 
-The wrapper should install all required packages, but this isn't always possible and will cause errors running the workflow. Try to install all required packages (see section above) prior to running the wrapper.
+* The wrapper should install all required packages, but this isn't always possible and can therefore cause errors running the workflow. Try to install all required packages (see section above) prior to running the wrapper.
 
 ----
 ## Outputs of ViralLink

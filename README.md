@@ -50,9 +50,10 @@ distributions
 ### Inputs to ViralLink
 
 When running the workflow using the wrapper script (*virallink.py*), all input files and parameters should be specified by editing the *parameters.tsv* file using a text editor. For description of these parameters, see the *parameter_descriptions.txt* file. 
-> NB. Do not edit the parameter names in the *parameters.tsv* file. File paths can be relative and slashes are not required at the beginning and end of the paths.
-
-> NB. The wrapper will run all scripts in step 1 -> step 6 inclusive. The only script not run is step 7, as it requires interpretation of the results for the purpose of selecting functions of interest to visualise.
+> NB. 
+> * Do not edit the parameter names in the *parameters.tsv* file. 
+> * File paths can be relative and slashes are not required at the beginning and end of the paths.
+> * The wrapper will run all scripts in step 1 -> step 6 inclusive. The only script not run is step 7, as it requires interpretation of the results for the purpose of selecting functions of interest to visualise.
 
 If the user would like to run the scripts seperately from the workflow wrapper, each script should be run from the command line, specifying the required input parameters. The parameters for each script can be found in the *Scripts/all_parameters.tsv* file and in the script *readme.md* files.
 

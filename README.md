@@ -25,6 +25,8 @@ ViralLink should run on any UNIX system, and has been tested on Linux and Mac OS
 
 Furthermore, the following packages are required:
 
+> NB. The R packages should be installed automatically as part of the workflow, but it is advisable to pre-install them if you can. The Python packages must be pre-installed.
+
 * R packages: 
 
 ```
@@ -36,6 +38,19 @@ RCy3 (≥ 2.6.0)
 igraph
 reshape2
 naniar
+clusterProfiler
+ReactomePA
+```
+
+To install R packages, type the following into the terminal:
+
+```
+R
+install.packages(c(""BiocManager","tidyverse","DESeq2","devtools", "igraph","reshape2","naniar"))
+require(devtools)
+install_github('saezlab/OmnipathR')
+BiocManager::install("RCy3","clusterProfiler","ReactomePA","org.Hs.eg.db")
+quit()
 ```
 
 * Python3 packages:
@@ -46,16 +61,22 @@ numpy (≥ 1.7)
 networkx
 distributions
 ```
+To install Python3 packages, type the following into the terminal:
+
+```
+pip install numpy networkx scipy distributions
+```
+
 
 ### Inputs to ViralLink
 
-When running the workflow using the wrapper script (*virallink.py*), all input files and parameters should be specified by editing the *parameters.tsv* file using a text editor. For description of these parameters, see the *parameter_descriptions.txt* file. 
+When running the workflow using the wrapper script (*virallink.py*), all input files and parameters should be specified by editing the *parameters.yml* file using a text editor. For description of these parameters, see the *parameters_description.tsv* file. 
 > NB. 
-> * Do not edit the parameter names in the *parameters.tsv* file. 
+> * Do not edit the parameter names in the *parameters.yml* file. 
 > * File paths can be relative and slashes are not required at the beginning and end of the paths.
 > * The wrapper will run all scripts in step 1 -> step 6 inclusive. The only script not run is step 7, as it requires interpretation of the results for the purpose of selecting functions of interest to visualise.
 
-If the user would like to run the scripts seperately from the workflow wrapper, each script should be run from the command line, specifying the required input parameters. The parameters for each script can be found in the *Scripts/all_parameters.tsv* file and in the script *readme.md* files.
+If the user would like to run the scripts seperately from the workflow wrapper, each script should be run from the command line, specifying the required input parameters. The parameters for each script can be found in the *Scripts/parameters_all.tsv* file and in the script *readme.md* files.
 
 **The input files for ViralLink are as follows:**
 
@@ -111,7 +132,7 @@ git clone https://https://github.com/korcsmarosgroup/viral_intracellular_network
 ### Run Python wrapper
 Make sure to navigate to the repository main directory before running the script. Do not change the folder structure or file names.
 
-> NB. Ensure the *parameters.tsv* file have been edited prior to running the script (unless you're running the example input data).
+> NB. Ensure the *parameters.yml* file have been edited prior to running the script (unless you're running the example input data).
 
 ```
 cd folder/to/clone-into/ViralLink
@@ -124,7 +145,7 @@ python3 virallink.py
 
 * Make sure that the *virallink.py* script is being run in Python 3 and from the main directory of the ViralLink repository. Make sure none of the folders of files have been renamed or moved.
 
-* Ensure that the layout of the *parameters.tsv* file and the parameter names have not been altered. Regarding the specified parameters, make sure that the file paths are reachable from the main directory of the ViralLink repository.
+* Ensure that the layout of the *parameters.yml* file and the parameter names have not been altered. Regarding the specified parameters, make sure that the file paths are reachable from the main directory of the ViralLink repository.
 
 * The wrapper should install all required packages, but this isn't always possible and can therefore cause errors running the workflow. Try to install all required packages (see section above) prior to running the wrapper.
 

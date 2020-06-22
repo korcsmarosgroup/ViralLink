@@ -1,9 +1,9 @@
-#Parameter_name	#Parameter	#Parameter_description
-counts	input_files/example_expression_data/GSE147507_RNA_Seq_Raw_Counts.tsv	unnormalised transcriptomics counts table, tab delimited, genes (using gene symbols or UniProt protein IDs) as rows and samples as columns.
-id_type	symbols	ID type in the input counts table: *symbol* or *uniprot*
-meta	input_files/example_expression_data/GSE147507_mapping.txt	A tab-delimited two-column metadata table specifying test and control sample IDs in the following format. Here the sample names must match the headers in the normalised counts table.
-lfccutoff	0.5	Absolute log2 fold change cut off value for determining differentially expressed genes
-pcutoff	0.05	Adjusted p value cut off for determining differentially expressed genes
-hbps	input_files/sarscov2-human_ppis_gordon_april2020.txt	Viral - human protein-protein interaction table. Tab delimited with one line per interaction. Columns named *viral_protein* and *human_protein* Human proteins should be in UniProt format.
-sars	input_files/sarscov2_protein_annotations.txt	Gene symbol annotations for all input viral proteins, for ease of data interpretation. Tab-delimited with one line per protein. At least 2 columns named *Accession* and *gene_symbol*
-outdir	output_directory	Folder for all results to be saved to (subdirectories are created automatically for each step in the workflow)
+#Parameter_name	#Parameter
+counts	input_files/example_expression_data/GSE147507_RNA_Seq_Raw_Counts.tsv
+id_type	symbols
+meta	input_files/example_expression_data/GSE147507_mapping.txt
+lfccutoff	0.5
+pcutoff	0.05
+hbps	input_files/sarscov2-human_ppis_gordon_april2020.txt
+sars	input_files/sarscov2_protein_annotations.txt
+outdir	output_directory

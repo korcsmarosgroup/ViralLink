@@ -93,13 +93,13 @@ dds <- DESeq(dds)
 ##### Save output ######
 
 # Create output dir
-dir.create(file.path(outdir, "1_process_expression_results"), showWarnings = FALSE, recursive = TRUE)
+dir.create(file.path(outdir, "1_process_expression_data"), showWarnings = FALSE, recursive = TRUE)
 
 # See the comparisons carried out
 comparison_name <- resultsNames(dds)
 
 # Save the object
-save(dds, file=file.path(outdir, "1_process_expression_results", file="deseq2_dds.Rdata"))
+save(dds, file=file.path(outdir, "1_process_expression_data", file="deseq2_dds.Rdata"))
 
 # Get results table
 results <- results(dds, name=comparison_name[2])
@@ -107,16 +107,16 @@ results <- results(dds, name=comparison_name[2])
 # Extract normalized counts data
 dds <- estimateSizeFactors(dds)
 norm_counts <- counts(dds, normalized = TRUE)
-write.table(norm_counts, file.path(outdir, "1_process_expression_results",file="counts_normalised_deseq2.txt"), sep = "\t", quote=F)
+write.table(norm_counts, file.path(outdir, "1_process_expression_data",file="counts_normalised_deseq2.txt"), sep = "\t", quote=F)
 
 # Save differential expression results
 out_file <- paste0("deseq2_res_", comparison_name[2], ".csv")
-write.csv(as.data.frame(results), file=file.path(outdir, "1_process_expression_results", file= out_file))
+write.csv(as.data.frame(results), file=file.path(outdir, "1_process_expression_data", file= out_file))
 
 # Filter results
 results_filt <- as.data.frame(results) %>% tibble::rownames_to_column('Gene') %>% filter((padj <= pcutoff)&((log2FoldChange >= lfccutoff)|(log2FoldChange <= -lfccutoff)))
 out_file2 <- paste0("deseq2_res_", comparison_name[2], "_filtered.csv")
-write.csv(results_filt, file=file.path(outdir, "1_process_expression_results", file=out_file2), row.names = FALSE)
+write.csv(results_filt, file=file.path(outdir, "1_process_expression_data", file=out_file2), row.names = FALSE)
 
 # reset message sink and close the file connection
 sink(type="message")

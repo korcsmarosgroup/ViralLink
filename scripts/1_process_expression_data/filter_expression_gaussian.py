@@ -91,7 +91,7 @@ def main():
     zscore= (log_mean - mu) / sigma
 
     # Save results
-    outputname = os.path.join(output_folder, '1_process_expression_results', 'expressed_genes.txt')
+    outputname = os.path.join(output_folder, '1_process_expression_data', 'expressed_genes.txt')
     with open(outputname, 'w') as output_file:
         output_file.write('Gene' + "\t" + 'mean_expression' + "\t" + "Log2_mean_expression" + "\t" + "zscore" + "\n")
         result = np.where(zscore > -3)

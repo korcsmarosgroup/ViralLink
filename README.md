@@ -147,7 +147,7 @@ python3 virallink.py
 
 * Ensure that the layout of the *parameters.yml* file and the parameter names have not been altered. Regarding the specified parameters, make sure that the file paths are reachable from the main directory of the ViralLink repository.
 
-* The wrapper should install all required packages, but this isn't always possible and can therefore cause errors running the workflow. Try to install all required packages (see section above) prior to running the wrapper.
+* The wrapper should install all required R packages, but this isn't always possible and can therefore cause errors running the workflow. Python packages must be pre-installed. Try to install all required packages (see section above) prior to running the wrapper.
 
 ----
 ## Outputs of ViralLink

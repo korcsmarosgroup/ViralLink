@@ -1,4 +1,4 @@
-#Parameter_name	#Parameter #Parameter_description
+#Parameter_name	#Parameter	#Parameter_description
 counts	input_files/example_expression_data/GSE147507_RNA_Seq_Raw_Counts.tsv	unnormalised transcriptomics counts table, tab delimited, genes (using gene symbols or UniProt protein IDs) as rows and samples as columns.
 id_type	symbols	ID type in the input counts table: *symbol* or *uniprot*
 meta	input_files/example_expression_data/GSE147507_mapping.txt	A tab-delimited two-column metadata table specifying test and control sample IDs in the following format. Here the sample names must match the headers in the normalised counts table.

@@ -20,7 +20,7 @@ Script to carry out differential expression using Deseq2 with a counts table inp
 **Run from command line:**
 
 ```
-Rscript diff_expression_deseq2.R raw_counts_table.txt metadata_table.txt output_directory/
+Rscript diff_expression_deseq2.R raw_counts_table.txt metadata_table.txt output_directory
 ```
 
 # 2. filter_expression_gaussian.py
@@ -36,5 +36,5 @@ Script to filter a normalised counts table only for genes which are expressed
 **Run from command line:**
 
 ```
-python3 filter_expression_gaussian.py -i normalised_counts_table.txt -o output_directory/
+python3 filter_expression_gaussian.py -i normalised_counts_table.txt -of output_directory
 ```

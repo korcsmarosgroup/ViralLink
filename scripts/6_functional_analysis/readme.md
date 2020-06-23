@@ -1,6 +1,6 @@
 # 1. network_functional_analysis.R
 
-Functional overrepresentation analysis of causal networks: upstream signalling proteins (binding proteins-TFs inclusive), and differentially expressed genes (DEGs) seperately. Uses Reactome and Gene ontology BP.
+Functional overrepresentation analysis of causal networks: upstream signalling proteins (binding proteins-TFs inclusive), and differentially expressed genes (DEGs) seperately. Uses Reactome and Gene Ontology BP.
 
 >NB. 
 >* GO analyses carried out using uniprot IDs, but for the Reactome analysis it is necessary to convert to ENTREZ IDs
@@ -10,9 +10,9 @@ Functional overrepresentation analysis of causal networks: upstream signalling p
 
 **Input:**
 
-* whole network node file (output from combined_edge_node_tables.R)
-* background network file for ppis (contextualised specific PPI network output from filter_network_expressed_genes.R)
-* background network file for degs (contextualised specific TF-TG network output from filter_network_expressed_genes.R)
+* Whole network node file (output from combined_edge_node_tables.R)
+* Background network file for ppis (contextualised specific PPI network output from filter_network_expressed_genes.R)
+* Background network file for degs (contextualised specific TF-TG network output from filter_network_expressed_genes.R)
         
 **Output:**
 
@@ -20,13 +20,12 @@ Functional overrepresentation analysis of causal networks: upstream signalling p
 
 **Run from command line:**
 ```
-Rscript network_functional_analysis.R node_table.txt contextualised_ppi_network.txt contextualised_tf-tg_network.txt output_directory/
+Rscript network_functional_analysis.R node_table.txt contextualised_ppi_network.txt contextualised_tf-tg_network.txt output_directory
 ```
 
 # 2. cluster_functional_analysis.R
 
-Functional analysis of human genes from clusters inside network
-Overrepresentation analysis - reactome and GO BP - using cell type specific network as background
+Functional analysis of human genes from clusters inside network. Overrepresentation analysis - reactome and GO BP - using cell type specific network as background.
 
 >NB. 
 >* GO analyses carried out using uniprot IDs for the ppi nodes, but for the Reactome analysis it was necessary to convert to ENTREZ
@@ -44,7 +43,7 @@ Overrepresentation analysis - reactome and GO BP - using cell type specific netw
 **Run from command line:**
  
 ```
-Rscript cluster_functional_analysis.R node_table_betweenness_clusters.txt contextualised_ppi_network.txt output_directory/
+Rscript cluster_functional_analysis.R node_table_betweenness_clusters.txt contextualised_ppi_network.txt output_directory
 ```
 
 # 3. reformat_functional_result.R
@@ -62,5 +61,5 @@ Script to reformat functional enrichment results (output from network_functions_
 **Run from command line:**
 
 ```
-Rscript reformat_functional_result.R output_directory/
+Rscript reformat_functional_result.R output_directory
 ```

@@ -11,7 +11,7 @@ Script to download directed and signed OmniPath protein-protein interactions and
 **Run from command line:**
 
 ```
-Rscript Downloading_omnipath_dorothea.R /path_to/output_directory/
+Rscript Downloading_omnipath_dorothea.R /path_to/output_directory
 ```
 
 
@@ -30,7 +30,7 @@ Script to filter networks for expressed genes - runs for regulatory interactions
 **Run from command line:**
 
 ```
-Rscript filter_network_expressed_genes.R expressed_genes_file.txt tf-tg_network.txt ppi_network.txt id_type("symbol" or "uniprot") output_directory/
+Rscript filter_network_expressed_genes.R expressed_genes_file.txt tf-tg_network.txt ppi_network.txt id_type("symbol" or "uniprot") output_directory
 ```
 
 # 3. get_regulator_deg_network.R 
@@ -48,5 +48,5 @@ Script to get regulator - differentially expressed genes from the contextualised
 **Run from command line:**
 
 ```
-Rscript get_regulator_deg_network.R contextualised_tf-tg_network.txt differentially_expressed_gene_table.csv id_type("symol" or "uniprot") output_directory/
+Rscript get_regulator_deg_network.R contextualised_tf-tg_network.txt differentially_expressed_gene_table.csv id_type("symol" or "uniprot") output_directory
 ```

@@ -119,7 +119,7 @@ def run_script(script_parameters, parameters_for_the_script, script, step, call_
     for p in parameters_for_the_script:
         if p in script_parameters:
             call_command.append(script_parameters[p])
-        elif len(p) < 3 and p not in script_parameters:
+        elif len(p) < 4 and p not in script_parameters:
             call_command.append(p)
         else:
             new_parameter = f"{script_parameters['outdir']}/{p}"

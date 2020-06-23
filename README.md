@@ -135,6 +135,7 @@ Make sure to navigate to the repository main directory before running the script
 > NB. Ensure the *parameters.yml* file have been edited prior to running the script (unless you're running the example input data).
 
 ```
+*Open Cytoscape locally*
 cd folder/to/clone-into/ViralLink
 python3 virallink.py
 ```
@@ -148,6 +149,8 @@ python3 virallink.py
 * Ensure that the layout of the *parameters.yml* file and the parameter names have not been altered. Regarding the specified parameters, make sure that the file paths are reachable from the main directory of the ViralLink repository.
 
 * The wrapper should install all required R packages, but this isn't always possible and can therefore cause errors running the workflow. Python packages must be pre-installed. Try to install all required packages (see section above) prior to running the wrapper.
+
+* If you are missing *.cys* files or clustering results, make sure Cytoscape is open locally before running the workflow.
 
 ----
 ## Outputs of ViralLink

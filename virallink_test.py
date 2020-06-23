@@ -18,11 +18,6 @@ scripts_folders = {
                               "cluster_functional_analysis.R",
                               "reformat_functional_result.R"]
 }
-scripts_folders_test = {
-    "6_functional_analysis": ["network_functional_analysis.R",
-                              "cluster_functional_analysis.R",
-                              "reformat_functional_result.R"]
-}
 scripts_parameters = {
     "diff_expression_deseq2.R": ["counts",
                                  "meta",
@@ -148,7 +143,7 @@ def main():
     checking_parameters(script_parameters)
     print(f'*** Starting... ***\n')
 
-    for step in scripts_folders_test:
+    for step in scripts_folders:
 
         step_name_array = step.split("_")[1:]
         step_number = step.split("_")[0].strip()

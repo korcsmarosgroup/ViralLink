@@ -140,6 +140,8 @@ cd folder/to/clone-into/ViralLink
 python3 virallink.py
 ```
 
+The speed of the workflow will depend on the specification of the computer. The most intensive parts are the tiedie.py script in step 3 and the functional analysis of step 6. It is likely to take between 30 minutes and a 2 hours to complete everything.
+
 ### Debugging
 
 * The wrapper outputs command line messages, warnings and errors to the file *virallink.out*. Open this in a text editor to try to identify issues with the workflow.

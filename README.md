@@ -159,8 +159,8 @@ The speed of the workflow will depend on the specification of the computer. The 
 
 ViralLink outputs a number of different files. The most important are the final network and analysis results files:
 1. **The recontructed intracellular network:**
-	- in edge table text format: *4_create_network/final_network.txt*
-	- in Cytoscape format: *5_betweenness_and_cluster_analysis/causal_network.cys*
+	- In edge table text format: *4_create_network/final_network.txt*
+	- In Cytoscape format: *5_betweenness_and_cluster_analysis/causal_network.cys*
 	
 2. **Node annotations for each gene/protein in the network:**
 	- Without betweenness centrality measures and cluster annotations: *4_create_network/node_table.txt*

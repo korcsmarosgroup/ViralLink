@@ -27,7 +27,7 @@ Furthermore, the following packages are required:
 
 > NB. The R packages should be installed automatically as part of the workflow, but it is advisable to pre-install them if you can. The Python packages must be pre-installed.
 
-* R packages: 
+**R packages:** 
 
 ```
 tidyverse
@@ -53,7 +53,7 @@ BiocManager::install("RCy3","clusterProfiler","ReactomePA","org.Hs.eg.db")
 quit()
 ```
 
-* Python3 packages:
+**Python3 packages:**
 
 ```
 scipy (≥ 0.12.0)
@@ -76,11 +76,11 @@ When running the workflow using the wrapper script (*virallink.py*), all input f
 > * File paths can be relative and slashes are not required at the beginning and end of the paths.
 > * The wrapper will run all scripts in step 1 -> step 6 inclusive. The only script not run is step 7, as it requires interpretation of the results for the purpose of selecting functions of interest to visualise.
 
-If the user would like to run the scripts seperately from the workflow wrapper, each script should be run from the command line, specifying the required input parameters. The parameters for each script can be found in the *Scripts/parameters_all.tsv* file and in the script *readme.md* files.
+If the user would like to run the scripts seperately from the workflow wrapper, each script should be run from the command line, specifying the required input parameters. The parameters for each script can be found in the *scripts/parameters_all.tsv* file and in the script *readme.md* files.
 
 **The input files for ViralLink are as follows:**
 
-1. An unnormalsied counts table from a human transcriptomics study. Genes (using gene symbols or UniProt protein IDs) as rows and samples as columns.  (REQUIRED FROM USER)
+1. An unnormalised counts table from a human transcriptomics study. Genes (using gene symbols or UniProt protein IDs) as rows and samples as columns.  (REQUIRED FROM USER)
 
 2. A tab-delimited two-column metadata table specifying test and control sample IDs in the following format. Here the sample names must match the headers in the normalised counts table. For an example metadata file see the *input_data* folder.  (REQUIRED FROM USER)
 
@@ -98,7 +98,7 @@ If the user would like to run the scripts seperately from the workflow wrapper, 
 	- Human proteins in UniProt format
 	
 4. Gene symbol annotations for all input viral proteins, for ease of data interpretation.
-	- Annotations for the Gordon *et al* SARS-CoV-2 proteins provided: *input_files/sarscov2_protein_annotations.txt*
+	- Annotations for the Gordon *et al.* SARS-CoV-2 proteins provided: *input_files/sarscov2_protein_annotations.txt*
 	- Tab-delimited with one line per protein
 	- At least 2 columns named *Accession* and *gene_symbol*
 
@@ -122,11 +122,11 @@ If the user would like to run the scripts seperately from the workflow wrapper, 
 ## Running ViralLink
 
 ### Download
-To use ViralLink, all _scripts_ and all _input\_files_ should be downloaded using the _Clone or download_ button on the Github web page or by typing the following into a terminal window:
+To use ViralLink, download the ViralLink repository using the _Clone or download_ button on the Github web page or by typing the following into a terminal window:
 
 ```
 cd folder/to/clone-into/
-git clone https://https://github.com/korcsmarosgroup/viral_intracellular_networks
+git clone https://https://github.com/korcsmarosgroup/ViralLink
 ```
 
 ### Run Python wrapper
@@ -143,7 +143,7 @@ python3 virallink.py
 
 * The wrapper outputs command line messages, warnings and errors to the file *virallink.out*. Open this in a text editor to try to identify issues with the workflow.
 
-* Make sure that the *virallink.py* script is being run in Python 3 and from the main directory of the ViralLink repository. Make sure none of the folders of files have been renamed or moved.
+* Make sure that the *virallink.py* script is being run in Python 3 and from the main directory of the ViralLink repository. Make sure none of the folders or files have been renamed or moved.
 
 * Ensure that the layout of the *parameters.yml* file and the parameter names have not been altered. Regarding the specified parameters, make sure that the file paths are reachable from the main directory of the ViralLink repository.
 

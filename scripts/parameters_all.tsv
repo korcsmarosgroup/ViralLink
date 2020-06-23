@@ -24,7 +24,6 @@
 3_network_diffusion	tiedie.py	-u	3_network_diffusion/input_files/upstream.input
 3_network_diffusion	tiedie.py	-d	3_network_diffusion/input_files/downstream.input
 3_network_diffusion	tiedie.py	-n	3_network_diffusion/input_files/pathway.sif
-3_network_diffusion	tiedie.py	-n	3_network_diffusion/input_files/pathway.sif
 3_network_diffusion	tiedie.py	-o	3_network_diffusion/TieDie
 4_create_network	combined_edge_node_tables.R	rec_tf	3_network_diffusion/TieDIE/tiedie.cn.sif
 4_create_network	combined_edge_node_tables.R	heats	3_network_diffusion/TieDIE/heats.NA

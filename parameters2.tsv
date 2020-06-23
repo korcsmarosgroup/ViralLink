@@ -1,9 +1,0 @@
-#Parameter_name	#Parameter
-counts	input_files/example_expression_data/GSE147507_RNA_Seq_Raw_Counts.tsv
-id_type	symbols
-meta	input_files/example_expression_data/GSE147507_mapping.txt
-lfccutoff	0.5
-pcutoff	0.05
-hbps	input_files/sarscov2-human_ppis_gordon_april2020.txt
-sars	input_files/sarscov2_protein_annotations.txt
-outdir	output_directory

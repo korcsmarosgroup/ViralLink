@@ -32,7 +32,7 @@ def parse_args(args):
                         action="store",
                         required=True)
 
-    parser.add_argument("-o", "--output-folder",
+    parser.add_argument("-of", "--output-folder",
                         help="<path to the output folder> [mandatory]",
                         type=str,
                         dest="output_folder",

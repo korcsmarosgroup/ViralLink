@@ -34,4 +34,5 @@ Script to run diffusion analysis using TieDIE
 **Run from command line:**
 
 ```
+python3 TieDie/tiedie.py -u upstream.input -d downstream.input -n network.sif -o outdput_directory
 ```

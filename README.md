@@ -21,7 +21,7 @@ More detailed information about ViralLink is available in the following paper:
 
 ViralLink should run on any UNIX system, and has been tested on Linux and Mac OS. Windows compatibility is not supported at this time.
 
-**R (≥ 4.0.0)** and **Python 3** are required to run the workflow. Additionally, for clustering analysis and visualisation, **Cytoscape (≥ 7.0.0)** is required (and it must be open locally when the scripts are run - or these functions will be skipped).
+**R (≥ 4.0.0)** and **Python 3** are required to run the workflow. Additionally, for clustering analysis and visualisation, **Cytoscape (≥ 7.0.0)** is required (AND IT MUST BE OPEN LOCALLY when the scripts are run - or these functions will be skipped).
 
 Furthermore, the following packages are required:
 

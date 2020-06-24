@@ -25,11 +25,11 @@
 if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
 if (!requireNamespace("RCy3", quietly = TRUE)) 
-  BiocManager::install("RCy3")
+  BiocManager::install("RCy3",repos = "https://cloud.r-project.org")
 if (!requireNamespace("tidyverse", quietly = TRUE)) 
-  install.packages("tidyverse")
+  install.packages("tidyverse",repos = "https://cloud.r-project.org")
 if (!requireNamespace("naniar", quietly = TRUE)) 
-  install.packages("naniar")
+  install.packages("naniar",repos = "https://cloud.r-project.org")
 
 # Load packages
 library(tidyverse)

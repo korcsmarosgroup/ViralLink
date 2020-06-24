@@ -19,7 +19,7 @@ message("\nStarting betweenness + clustering: betweenness_and_clustering.R\n")
 
 # Install requried packages
 if (!requireNamespace("BiocManager", quietly = TRUE))
-  install.packages("BiocManager", repos = "https://cloud.r-project.org")
+  install.packages("BiocManager")
 if (!requireNamespace("RCy3", quietly = TRUE)) 
   BiocManager::install("RCy3", repos = "https://cloud.r-project.org")
 if (!requireNamespace("tidyverse", quietly = TRUE)) 

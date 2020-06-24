@@ -24,7 +24,7 @@ message("\nStarting cluster functional analysis: cluster_functional_analysis.R\n
 
 # Install requried packages
 if (!requireNamespace("BiocManager", quietly = TRUE))
-  install.packages("BiocManager", repos = "https://cloud.r-project.org")
+  install.packages("BiocManager")
 if (!requireNamespace("ReactomePA", quietly = TRUE)) 
   BiocManager::install("ReactomePA", repos = "https://cloud.r-project.org")
 if (!requireNamespace("clusterProfiler", quietly = TRUE)) 

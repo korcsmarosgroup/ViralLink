@@ -18,7 +18,7 @@ message("\nStarting visualisation: cytoscape_visualisation.R\n")
 
 # Install required packages
 if (!requireNamespace("BiocManager", quietly = TRUE))
-  install.packages("BiocManager", repos = "https://cloud.r-project.org")
+  install.packages("BiocManager")
 if (!requireNamespace("RCy3", quietly = TRUE)) 
   BiocManager::install("RCy3", repos = "https://cloud.r-project.org")
 if (!requireNamespace("tidyverse", quietly = TRUE)) 

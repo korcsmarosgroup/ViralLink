@@ -46,10 +46,10 @@ To install R packages, type the following into the terminal:
 
 ```
 R
-install.packages(c(""BiocManager","tidyverse","DESeq2","devtools", "igraph","reshape2","naniar"))
+install.packages(c("BiocManager","tidyverse","devtools", "igraph","reshape2","naniar"))
 require(devtools)
 install_github('saezlab/OmnipathR')
-BiocManager::install("RCy3","clusterProfiler","ReactomePA","org.Hs.eg.db")
+BiocManager::install("RCy3","DESeq2","clusterProfiler","ReactomePA","org.Hs.eg.db")
 quit()
 ```
 

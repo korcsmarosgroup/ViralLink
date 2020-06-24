@@ -1,3 +1,4 @@
+from collections import deque
 import subprocess
 import sys
 import os
@@ -17,6 +18,10 @@ scripts_folders = {
     "6_functional_analysis": ["network_functional_analysis.R",
                               "cluster_functional_analysis.R",
                               "reformat_functional_result.R"]
+}
+scripts_folders_test = {
+    "1_process_expression_data": ["diff_expression_deseq2.R",
+                                  "filter_expression_gaussian.py"]
 }
 scripts_parameters = {
     "diff_expression_deseq2.R": ["counts",
@@ -70,7 +75,7 @@ scripts_parameters = {
 }
 
 
-def checking_parameters(script_parameters):
+def checking_input_parameters(script_parameters):
     """
     Checking the parameters
     """
@@ -106,11 +111,38 @@ def get_parameters():
     return parameters
 
 
+def checking_parameters_of_the_scripts(call_command):
+    """
+    Checking that the parameter files for the given script exists or not
+    """
+    for param in call_command:
+
+        if "/" in param and not param.endswith(".R") and not param.endswith(".py"):
+            if not os.path.isfile(param):
+                sys.stdout.write(f" WARNING: One of the parameters of the script does not exist: "
+                                 f"{param}\n\n")
+                sys.exit(3)
+
+
+def checking_errors():
+    """
+    Checking that the scripts have errors or not
+    """
+    with open("virallink.out", 'r') as log:
+
+        for line in log:
+            line = line.strip()
+
+            if "Execution halted" in line:
+                sys.stdout.write(f" WARNING: There was an error during the running! Please check the 'virallink.out' "
+                                 f"file for more details.\n\n")
+                sys.exit(4)
+
+
 def run_script(script_parameters, parameters_for_the_script, script, step, call_script):
     """
     Function to run the given script
     """
-
     if script == "tiedie.py":
         call_command = [call_script, f"scripts/{step}/TieDie/{script}"]
     else:
@@ -125,8 +157,14 @@ def run_script(script_parameters, parameters_for_the_script, script, step, call_
             new_parameter = f"{script_parameters['outdir']}/{p}"
             call_command.append(new_parameter)
 
+    checking_parameters_of_the_scripts(call_command)
+
     run = subprocess.Popen(call_command, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     run.communicate()
+
+    checking_errors()
+
+    print(f"*** {script} finished successfully... ***\n")
 
 
 def main():
@@ -139,11 +177,11 @@ def main():
         os.remove("virallink.out")
 
     script_parameters = get_parameters()
-    print(f'\n*** Checking parameters... ***')
-    checking_parameters(script_parameters)
-    print(f'*** Starting... ***\n')
+    print(f'\n*** Checking input parameters... ***')
+    checking_input_parameters(script_parameters)
+    print(f'*** Input parameters are fine, starting... ***\n')
 
-    for step in scripts_folders:
+    for step in scripts_folders_test:
 
         step_name_array = step.split("_")[1:]
         step_number = step.split("_")[0].strip()
@@ -162,8 +200,6 @@ def main():
             elif script.endswith(".py"):
                 call_script = "python3"
                 run_script(script_parameters, parameters_for_the_script, script, step, call_script)
-
-            print(f"*** {script} finished successfully... ***\n")
 
     print(f'\n*** ViralLink pipeline was successfully finished! ***\n')
 

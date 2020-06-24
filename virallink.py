@@ -1,4 +1,3 @@
-from collections import deque
 import subprocess
 import sys
 import os

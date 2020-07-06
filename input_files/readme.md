@@ -11,6 +11,7 @@
 2. sarscov2-human_ppis_gordon_april2020.txt
 	* Protein-protein interactions (PPIs) between SARS-CoV-2 proteins and human binding proteins predicted by *Gordon et al.* (doi: 10.1038/s41586-020-2286-9) obtained from IntAct in April 2020.
 	* Can be exchanged for any other viral-host PPI interactions written in the same format: tab delimited, two columns with headers *viral_protein* and *human_protein* with IDs in UniProt foramt.
+	* An optional 3rd column can be added to this file. Named *sign*, this column can contain either *+* or *-* to indicate an activatory or an inhibitory interaction (respectively). If this column is not provided, all interactions are assumed to be inhibitory.
 
 3. sarscos2_protein_annotations.txt
 	* Gene annotations for the SARS-CoV-2 proteins in the PPI interaction file (*sarscov2-human_ppis_gordon_april2020.txt*). Obtained from IntAct.

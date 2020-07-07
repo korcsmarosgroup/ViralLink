@@ -127,7 +127,7 @@ To use ViralLink, download the ViralLink repository using the _Clone or download
 
 ```
 cd folder/to/clone-into/
-git clone https://https://github.com/korcsmarosgroup/ViralLink
+git clone https://github.com/korcsmarosgroup/ViralLink
 ```
 
 ### Run Python wrapper

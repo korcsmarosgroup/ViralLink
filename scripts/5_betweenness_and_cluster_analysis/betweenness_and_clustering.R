@@ -91,7 +91,7 @@ cytoscape_func <- function(i_net){
     commandsRun('mcode cluster degreeCutoff=2 fluff=FALSE haircut=TRUE nodeScoreCutoff=0.2 kCore=2 maxDepthFromStart=100')
     
     # Wait for Cytoscape to catch up
-    Sys.sleep(60)
+    Sys.sleep(180)
     
     ###### PROBLEMS ##########
     

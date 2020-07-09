@@ -95,6 +95,7 @@ If the user would like to run the scripts seperately from the workflow wrapper, 
 	- Interactions for SARS-CoV-2 from [*Gordon et al.*](https://www.nature.com/articles/s41586-020-2286-9) provided: *input_files/sarscov2-human_ppis_gordon_april2020.txt*
 	- Tab-delimited with one line per interaction
 	- 2 columns named *viral_protein* and *human_protein*
+	- An optional 3rd column named *sign* can contain either *+* or *-* to indicate an activatory or an inhibitory interaction (respectively). If this column is not provided, all interactions are assumed to be inhibitory.
 	- Human proteins in UniProt format
 	
 4. Gene symbol annotations for all input viral proteins, for ease of data interpretation.
@@ -126,7 +127,7 @@ To use ViralLink, download the ViralLink repository using the _Clone or download
 
 ```
 cd folder/to/clone-into/
-git clone https://https://github.com/korcsmarosgroup/ViralLink
+git clone https://github.com/korcsmarosgroup/ViralLink
 ```
 
 ### Run Python wrapper

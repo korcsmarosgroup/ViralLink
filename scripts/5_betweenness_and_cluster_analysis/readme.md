@@ -30,5 +30,5 @@ Script to create Cytoscape file containing each of the networks (whole causal ne
 **Run from command line:**
 
 ```
-Rscript cytoscape_visualisation.R intracellular_network.txt node_table_betweenness_clustering.txt output_directory
+Rscript cytoscape_visualisation.R final_network.txt node_table_betweenness_clustering.txt output_directory
 ```

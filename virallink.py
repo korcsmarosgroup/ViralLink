@@ -112,6 +112,9 @@ def checking_parameters_of_the_scripts(call_command):
     """
     for param in call_command:
 
+        if param.split("/")[-1] == "TieDIE":
+            continue
+
         if "/" in param and not param.endswith(".R") and not param.endswith(".py"):
             if not os.path.isfile(param):
                 sys.stdout.write(f" WARNING: One of the parameters of the script does not exist: "

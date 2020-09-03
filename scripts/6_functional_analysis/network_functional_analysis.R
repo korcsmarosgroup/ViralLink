@@ -9,7 +9,7 @@
 #     All nodes of the contextualised specific PPI network (expressed omnipath) are used as the background for the upstream signalling proteins
 #     All TGs of the contextualised specific TF-TG network (expressed dorothea) are used as the background for the DEGs
 #     significantly overrepresented functions have q val <= 0.05
-#     GO analyses use simplify to remove rudundant function (with parameter 0.1)
+#     GO analyses use simplify to remove rudundant function (with default parameter 0.7)
 #
 # Input: whole network node file (output from combined_edge_node_tables.R)
 #        background network file for ppis (contextualised specific PPI network output from filter_network_expressed_genes.R)
@@ -81,7 +81,7 @@ go_overrep <- function(net, back_nodes, name, id,folder){
   
   if (nrow(go1) > 0) {
     # Remove redundancy of GO terms. Cutoff refers to similarity
-    go2 <- clusterProfiler::simplify(go1, cutoff=0.1, by = "qvalue", select_fun=min)
+    go2 <- clusterProfiler::simplify(go1, by = "qvalue", select_fun=min)
     
     # Get as dataframe
     go2_df <- as.data.frame(go2)
@@ -90,7 +90,7 @@ go_overrep <- function(net, back_nodes, name, id,folder){
       # Get enrichment map
       map_ora <- emapplot(go2)
       # Save map
-      filen <- file.path(folder,paste0(name,"_map_0.1_GO_overrep.pdf"))
+      filen <- file.path(folder,paste0(name,"_map_GO_overrep.pdf"))
       pdf(filen)
       print(map_ora)
       dev.off()
@@ -99,7 +99,7 @@ go_overrep <- function(net, back_nodes, name, id,folder){
     # Get dot plot
     dot_plot <- dotplot(go2, showCategory=10, orderBy="qvalue", font.size = 10)
     # Save dot plot
-    filep <- file.path(folder,paste0(name,"_dot_0.1_GO_overrep.pdf"))
+    filep <- file.path(folder,paste0(name,"_dot_GO_overrep.pdf"))
     pdf(filep)
     print(dot_plot)
     dev.off()
@@ -172,16 +172,22 @@ nodes_degs <- nodes %>% filter(deg_layer == "deg") %>% dplyr::select(node)
 
 # Run GO overenrichment analysis
 go_res_ppi <- go_overrep(nodes_ppi, back_nodes_ppi, "ppis", "UNIPROT",path1)
-write.table(go_res_ppi, file = file.path(path1,"ppis_go_0.1_overrep_results.txt"), quote = FALSE, row.names = FALSE, sep = "\t")
+if (go_res_ppi != ""){
+  write.table(go_res_ppi, file = file.path(path1,"ppis_go_overrep_results.txt"), quote = FALSE, row.names = FALSE, sep = "\t")
+}
 go_res_deg <- go_overrep(nodes_degs, back_nodes_deg, "degs", "UNIPROT",path2)
-write.table(go_res_deg, file = file.path(path2, "degs_go_0.1_overrep_results.txt"), quote = FALSE, row.names = FALSE, sep = "\t")
-  
+if (go_res_deg != ""){
+  write.table(go_res_deg, file = file.path(path2, "degs_go_overrep_results.txt"), quote = FALSE, row.names = FALSE, sep = "\t")
+}
 # Run reactome overenrichment analysis
 reactome_res_ppi <- reactome_overrep(nodes_ppi, back_nodes_ppi, "ppis","UNIPROT",path1)
-write.table(reactome_res_ppi, file = file.path(path1, "ppis_reactome_overrep_results.txt"), quote = FALSE, row.names = FALSE, sep = "\t")
+if (reactome_res_ppi != ""){
+  write.table(reactome_res_ppi, file = file.path(path1, "ppis_reactome_overrep_results.txt"), quote = FALSE, row.names = FALSE, sep = "\t")
+}
 reactome_res_deg <- reactome_overrep(nodes_degs, back_nodes_deg, "degs","UNIPROT",path2)
-write.table(reactome_res_deg, file = file.path(path2, "degs_reactome_overrep_results.txt"), quote = FALSE, row.names = FALSE, sep = "\t")
-
+if (reactome_res_deg != ""){
+  write.table(reactome_res_deg, file = file.path(path2, "degs_reactome_overrep_results.txt"), quote = FALSE, row.names = FALSE, sep = "\t")
+}
 # reset message sink and close the file connection
 sink(type="message")
 close(zz)

@@ -6,7 +6,7 @@ Functional overrepresentation analysis of causal networks: upstream signalling p
 >* GO analyses carried out using uniprot IDs, but for the Reactome analysis it is necessary to convert to ENTREZ IDs
 >* All nodes of the cell-type specific PPI network (expressed omnipath) are used as the background for the upstream signalling proteins
 >* All TGs of the cell-type specific TF-TG network (expressed dorothea) are used as the background for the DEGs significantly overrepresented functions have q val <= 0.05
->* GO analyses use simplify to remove rudundant function (with parameter 0.1)
+>* GO analyses use simplify to remove redundant function (with default parameter 0.7)
 
 **Input:**
 
@@ -30,7 +30,7 @@ Functional analysis of human genes from clusters inside network. Overrepresentat
 >NB. 
 >* GO analyses carried out using uniprot IDs for the ppi nodes, but for the Reactome analysis it was necessary to convert to ENTREZ
 >* For the overenrichment analysis (q val <= 0.05) it usea all nodes of the cell-type specific networks (expressed omnipath) as the background.
->* For the GO analyses it uses simplify with parameter 0.1
+>* For the GO analyses it uses simplify with default parameter 0.7
 
 **Input:**
 * Node table (csv file) output from cytoscape containing the cluster annotations in the column "MCODE_cluster"

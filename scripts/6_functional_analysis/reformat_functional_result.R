@@ -36,8 +36,8 @@ if (length(args) != 1){
 outdir <- args[1]
 
 # Results of the functional analysis
-files <- c("6_functional_analysis/deg_layer/degs_go_0.1_overrep_results.txt", "6_functional_analysis/deg_layer/degs_reactome_overrep_results.txt",
-           "6_functional_analysis/ppi_layer/ppis_go_0.1_overrep_results.txt", "6_functional_analysis/ppi_layer/ppis_reactome_overrep_results.txt")
+files <- c("6_functional_analysis/deg_layer/degs_go_overrep_results.txt", "6_functional_analysis/deg_layer/degs_reactome_overrep_results.txt",
+           "6_functional_analysis/ppi_layer/ppis_go_overrep_results.txt", "6_functional_analysis/ppi_layer/ppis_reactome_overrep_results.txt")
 
 # Create output dir if required
 path <- file.path(outdir, "6_functional_analysis", "reformatted")
@@ -54,27 +54,31 @@ for (f in files){
       filen <- sapply(filen_list, tail, 1 )
     }
   
-    # Open file
+  # Open file if exists - else skip to next file
+  if (file.exists(file.path(outdir,f))) {
     data <- read.csv(file.path(outdir,f), sep = "\t")
+  } else {
+    next
+  } 
+  
+  if("geneID" %in% colnames(data)){
+   coln <- "geneID"
+  } else {
+   coln <- "core_enrichment"
+  }
     
-   if("geneID" %in% colnames(data)){
-     coln <- "geneID"
-   } else {
-     coln <- "core_enrichment"
-   }
+  # Filter for required cols and wide to long
+  data2 <- data %>% dplyr::select(c(Description, coln)) %>% separate_rows(coln)
+  data2$match <- 1
     
-    # Filter for required cols and wide to long
-    data2 <- data %>% dplyr::select(c(Description, coln)) %>% separate_rows(coln)
-    data2$match <- 1
+  # Pivot table
+  data3 <- data2 %>% pivot_wider(names_from = Description, values_from = match, values_fn = list(match = length))
     
-    # Pivot table
-    data3 <- data2 %>% pivot_wider(names_from = Description, values_from = match, values_fn = list(match = length))
+  # convert na to 0
+  data3[is.na(data3)] <- 0
     
-    # convert na to 0
-    data3[is.na(data3)] <- 0
-    
-    # Save
-    write.table(data3, file = file.path(path, paste0("reformatted_",filen)), sep = "\t", quote=F, row.names = F)
+  # Save
+  write.table(data3, file = file.path(path, paste0("reformatted_",filen)), sep = "\t", quote=F, row.names = F)
 }
 
 # reset message sink and close the file connection

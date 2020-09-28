@@ -153,6 +153,11 @@ python3 virallink.py
 
 The speed of the workflow will depend on the specification of the computer. The most intensive parts are the tiedie.py script in step 3 and the functional analysis of step 6. It is likely to take between 30 minutes and a 2 hours to complete everything.
 
+If you want to run any steps separately from the others, you need to navigate into the scripts folders. Every step has its own readme file, which contains the information on how you can run the given step only. For example:
+```
+cd folder/to/clone-into/ViralLink/deploy/pipeline/scripts/1_process_expression_data/
+```
+
 #### Debugging
 
 * The wrapper outputs command line messages, warnings and errors to the file *virallink.out*. Open this in a text editor to try to identify issues with the workflow.

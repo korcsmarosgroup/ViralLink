@@ -1,0 +1,32 @@
+Accession   Source Database Tax ID  Name    Tax Name    Length  gene_symbol alt_gene_symbol_1
+A0A663DJA2  unreviewed  2697049 orf10 protein   Severe acute respiratory syndrome coronavirus 2 38  orf10
+EBI-25475912    unreviewed  2697049 orf3b protein   Severe acute respiratory syndrome coronavirus 2     orf3b
+P0DTC1  reviewed    2697049 Replicase polyprotein 1a    Severe acute respiratory syndrome coronavirus 2 4405    orf1a   pp1a
+P0DTC1-PRO_0000449645   reviewed    2697049 Non-structural protein 11   Severe acute respiratory syndrome coronavirus 2     nsp11
+P0DTC2  reviewed    2697049 Spike glycoprotein  Severe acute respiratory syndrome coronavirus 2 1273    S
+P0DTC3  reviewed    2697049 Protein 3a  Severe acute respiratory syndrome coronavirus 2 275 orf3a   3a
+P0DTC4  reviewed    2697049 Envelope small membrane protein Severe acute respiratory syndrome coronavirus 2 75  E
+P0DTC5  reviewed    2697049 Membrane protein    Severe acute respiratory syndrome coronavirus 2 222 M
+P0DTC6  reviewed    2697049 Non-structural protein 6    Severe acute respiratory syndrome coronavirus 2 61  orf6    6
+P0DTC7  reviewed    2697049 Protein 7a  Severe acute respiratory syndrome coronavirus 2 121 orf7a   7a
+P0DTC8  reviewed    2697049 Non-structural protein 8    Severe acute respiratory syndrome coronavirus 2 121 orf8    8
+P0DTC9  reviewed    2697049 Nucleoprotein   Severe acute respiratory syndrome coronavirus 2 419 N
+P0DTD1  reviewed    2697049 Replicase polyprotein 1ab   Severe acute respiratory syndrome coronavirus 2 7096    orf1ab  rep 1a-1b
+P0DTD1-PRO_0000449619   reviewed    2697049 Non-structural protein 1    Severe acute respiratory syndrome coronavirus 2     nsp1
+P0DTD1-PRO_0000449620   reviewed    2697049 Non-structural protein 2    Severe acute respiratory syndrome coronavirus 3     nsp2
+P0DTD1-PRO_0000449621   reviewed    2697049 Non-structural protein 3    Severe acute respiratory syndrome coronavirus 4     nsp3
+P0DTD1-PRO_0000449622   reviewed    2697049 Non-structural protein 4    Severe acute respiratory syndrome coronavirus 5     nsp4
+P0DTD1-PRO_0000449623   reviewed    2697049 Non-structural protein 5    Severe acute respiratory syndrome coronavirus 6     nsp5
+P0DTD1-PRO_0000449624   reviewed    2697049 Non-structural protein 6    Severe acute respiratory syndrome coronavirus 7     nsp6
+P0DTD1-PRO_0000449625   reviewed    2697049 Non-structural protein 7    Severe acute respiratory syndrome coronavirus 8     nsp7
+P0DTD1-PRO_0000449626   reviewed    2697049 Non-structural protein 8    Severe acute respiratory syndrome coronavirus 9     nsp8
+P0DTD1-PRO_0000449627   reviewed    2697049 Non-structural protein 9    Severe acute respiratory syndrome coronavirus 10        nsp9
+P0DTD1-PRO_0000449628   reviewed    2697049 Non-structural protein 10   Severe acute respiratory syndrome coronavirus 11        nsp10
+P0DTD1-PRO_0000449629   reviewed    2697049 Non-structural protein 12   Severe acute respiratory syndrome coronavirus 12        nsp12
+P0DTD1-PRO_0000449630   reviewed    2697049 Non-structural protein 13   Severe acute respiratory syndrome coronavirus 13        nsp13
+P0DTD1-PRO_0000449631   reviewed    2697049 Non-structural protein 14   Severe acute respiratory syndrome coronavirus 14        nsp14
+P0DTD1-PRO_0000449632   reviewed    2697049 Non-structural protein 15   Severe acute respiratory syndrome coronavirus 15        nsp15
+P0DTD1-PRO_0000449633   reviewed    2697049 Non-structural protein 16   Severe acute respiratory syndrome coronavirus 16        nsp16
+P0DTD2  reviewed    2697049 Protein 9b  Severe acute respiratory syndrome coronavirus 17    97  orf9b   9b
+P0DTD3  reviewed    2697049 Uncharacterized protein 14  Severe acute respiratory syndrome coronavirus 18    73  orf14
+P0DTD8  reviewed    2697049 Protein non-structural 7b   Severe acute respiratory syndrome coronavirus 19    43  orf7b   7b

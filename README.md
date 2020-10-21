@@ -21,11 +21,11 @@ More detailed information about ViralLink is available in the following paper:
 ## Getting Started
 
 You can run the pipeline with or without a dockerisation. In both of the options, you can run the whole pipeline at once or you can run the different steps separately from each other.<br><br>
-NOTE: The whole pipeline (with the example input data) needs around 8 GB of memory! But the memory allocation will vary on the input dataset. For example if you try to use it on a bigger dataset then they may require more memory!
+NOTE: The whole pipeline (with the example input data) needs around 8 GB of memory! But the memory allocation will vary on the input dataset. For example if you try to use it on a bigger dataset then they may require more memory! You can change the memory available to Docker in the Docker application settings.
 
 ### Dockerised pipeline
 
-The dockerised pipeline requires only a few commands to run the whole analysis. Here you need to have Docker installed and working on your computer (docker version >=3). This is easily downloadable from the Docker website (www.docker.com). 
+The dockerised pipeline requires only a few commands to run the whole analysis. Here you need to have Docker installed and working on your computer (docker version >=3). This is easily downloadable from the Docker website (www.docker.com). Also remember to edit the memory settings to give Docker at least 8 GB of memory.
 
 #### Running dockerised ViralLink
 
@@ -48,7 +48,7 @@ If the above command successfully finished, you should see something like this:
 ```
 root@3c172830ba15:/home/virallink#
 ```
-After you got this prompt in your terminal, you can run the whole pipeline with the following command:
+After you got this prompt in your terminal, you can run the whole pipeline with the following command: NB. if you plan to provide your own input files please refer to the *Inputs to ViralLink section* to specify the input files before you run the pipeline. Otherwise the pipeline will run with the provided default input files.
 ```
 python3 virallink.py
 ```
@@ -174,13 +174,15 @@ cd folder/to/clone-into/ViralLink/deploy/pipeline/scripts/1_process_expression_d
 
 ## Inputs to ViralLink
 
-When running the workflow using the wrapper script (*virallink.py*), all input files and parameters should be specified by editing the *parameters.yml* file using a text editor. For description of these parameters, see the *parameters_description.tsv* file.
+When running the whole workflow (not using the scripts seperately), all input files and parameters should be specified by editing the *parameters.yml* file using a text editor. For description of these parameters, see the *parameters_description.tsv* file. Both files are located in the folder *deploy/pipeline/*.
 > NB.
 > * Do not edit the parameter names in the *parameters.yml* file.
 > * File paths can be relative and slashes are not required at the beginning and end of the paths.
-> * The wrapper will run all scripts in step 1 -> step 6 inclusive. The only script not run is step 7, as it requires interpretation of the results for the purpose of selecting functions of interest to visualise.
+> * The whole workflow wrapper will run all scripts in step 1 -> step 6 inclusive. The only script not run is step 7, as it requires interpretation of the results for the purpose of selecting functions of interest to visualise.
 
-If the user would like to run the scripts separately from the workflow wrapper, each script should be run from the command line, specifying the required input parameters. The parameters for each script can be found in the *scripts/parameters_all.tsv* file and in the script *readme.md* files.
+If the user would like to run the scripts separately from the whole workflow wrapper, each script should be run from the command line, specifying the required input parameters. The parameters for each script can be found in the *deploy/pipeline/scripts/parameters_all.tsv* file and in the script *readme.md* files.
+
+To run ViralLink on your own transcriptomics data there are two required input files: a normalised counts table and a metadata table. However it is also possible (although more complicated) to run the workflow using instead a normalised counts table, a metadata file and a table of differentially expressed genes (ideally pre-filtered - ViralLink will apply the log fold change and adjusted p value cut off specified). To use the later set of input files see the section *How to skip differential expression step*.
 
 **The input files for ViralLink are as follows:**
 
@@ -222,6 +224,12 @@ If the user would like to run the scripts separately from the workflow wrapper, 
  
 3. Type of ID in the input expression data
   -  Must be *symbol* (for gene symbols) or *uniprot* (for Uniprot IDs)
+  
+### How to skip the differential expression step
+
+To run ViralLink on your own transcriptomics data there are two required input files: a normalised counts table and a metadata table. However it is also possible (although more complicated) to run the workflow using instead a normalised counts table, a metadata file and a table of differentially expressed genes (ideally pre-filtered - ViralLink will apply the log fold change and adjusted p value cut off specified). In order to do this th workflow must skip the differential expression step. Please follow these instructions:
+
+...IN PROCESS...
 
 ## Outputs of ViralLink
 

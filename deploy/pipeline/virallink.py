@@ -25,7 +25,7 @@ scripts_parameters = {
                                  "outdir",
                                  "lfccutoff",
                                  "pcutoff"],
-    "filter_expression_gaussian.py": ["-i","1_process_expression_data/counts_normalised_deseq2.txt",
+    "filter_expression_gaussian.py": ["-i","1_process_expression_data/counts_normalised_deseq2_test.txt",
                                       "-of", "outdir"],
     "Downloading_omnipath_dorothea.R": ["outdir"],
     "filter_network_expressed_genes.R": ["1_process_expression_data/expressed_genes.txt",

@@ -182,7 +182,7 @@ When running the whole workflow (not using the scripts seperately), all input fi
 
 If the user would like to run the scripts separately from the whole workflow wrapper, each script should be run from the command line, specifying the required input parameters. The parameters for each script can be found in the *deploy/pipeline/scripts/parameters_all.tsv* file and in the script *readme.md* files.
 
-To run ViralLink on your own transcriptomics data there are two required input files: a normalised counts table and a metadata table. However it is also possible (although more complicated) to run the workflow using instead a normalised counts table, a metadata file and a table of differentially expressed genes (ideally pre-filtered - ViralLink will apply the log fold change and adjusted p value cut off specified). To use the later set of input files see the section *How to skip differential expression step*.
+To run ViralLink on your own transcriptomics data there are two required input files: a normalised counts table and a metadata table. However it is also possible (although more complicated) to run the workflow using instead a normalised counts table (of only test conditions), a metadata file, a table of prefiltered differentially expressed genes and a table of unfiltered differentially expressed genes. To use the later set of input files see the section *How to skip differential expression step*.
 
 **The input files for ViralLink are as follows:**
 
@@ -227,9 +227,39 @@ To run ViralLink on your own transcriptomics data there are two required input f
   
 ### How to skip the differential expression step
 
-To run ViralLink on your own transcriptomics data there are two required input files: a normalised counts table and a metadata table. However it is also possible (although more complicated) to run the workflow using instead a normalised counts table, a metadata file and a table of differentially expressed genes (ideally pre-filtered - ViralLink will apply the log fold change and adjusted p value cut off specified). In order to do this th workflow must skip the differential expression step. Please follow these instructions:
 
-...IN PROCESS...
+To run ViralLink on your own transcriptomics data there are two required input files: a normalised counts table and a metadata table. However it is also possible (although more complicated) to run the workflow using instead a normalised counts table (of only test conditions), a metadata file, a table of prefiltered differentially expressed genes and a table of unfiltered differentially expressed genes. In order to do this th workflow must skip the differential expression step. Please follow these instructions:
+
+1. Create a blank text file and save as *deploy/pipeline/virallink.out*.
+
+2. Format your normalised counts table and save in "deploy/pipeline/output_directory/1_process_expression_data/counts_filename.txt" (where *output_directory* is specified in the *paramters.yml* file).
+  - Genes are rows and samples are columns
+  - Tab-delimited file
+  - First column should contain gene names/ids and all other columns are counts values for test samples (as expressed genes are calculated only on test samples).   - The first row should contain a header. 
+  
+3. Format your filtered and unfiltered differential expression tables and saved as *deploy/pipeline/output_directory/1_process_expression_data/
+unfiltered_degs_filename.csv* and *deploy/pipeline/output_directory/1_process_expression_data/filtered_degs_filename.csv* (where *output_directory* is specified in the *paramters.yml* file).
+  - The first column contains gene names/ids with header *Gene*.
+  - Additionally columns with header *padj* and *log2FoldChange* must exist in the datasets. 
+  - The files must be saved in csv format
+  
+3. Edit the *deploy/pipeline/virallink.py* file to specify the filepaths of the files from steps 2 and 3. To do this:
+  - Replace *1_process_expression_data/counts_normalised_deseq2.txt* with *1_process_expression_data/counts_filename.txt*
+  - Replace *"1_process_expression_data/deseq2_res_condition_test_vs_control_filtered.csv* with *1_process_expression_data/filtered_degs_filename.csv* (there are multiple instances that need to be changed)
+  - Replace *1_process_expression_data/deseq2_res_condition_test_vs_control.csv* with *1_process_expression_data/unfiltered_degs_filename.csv*
+
+
+4. Edit the file *deploy/pipeline/virallink.py*"
+  - Remove *"diff_expression_deseq2.R"* from lines 8. After doing this lines 8/9 should look like this:
+
+> "1_process_expression_data": ["filter_expression_gaussian.py"],
+
+  - Also remove or comment out these lines:
+
+> if os.path.isfile("virallink.out"):
+>       os.remove("virallink.out")
+
+5. The whole pipeline wrapper can now be run as defined previously.
 
 ## Outputs of ViralLink
 

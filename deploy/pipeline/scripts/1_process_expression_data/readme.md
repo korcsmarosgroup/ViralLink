@@ -20,7 +20,7 @@ Script to carry out differential expression using Deseq2 with a counts table inp
 **Run from command line:**
 
 ```
-Rscript diff_expression_deseq2.R raw_counts_table.txt metadata_table.txt output_directory
+Rscript diff_expression_deseq2.R raw_counts_table.txt metadata_table.txt output_directory log2foldchange_cutoff q_value_cutoff
 ```
 
 # 2. filter_expression_gaussian.py

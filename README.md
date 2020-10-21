@@ -40,6 +40,8 @@ Go to the folder, where you downloaded the pipeline:
 ```
 cd folder/to/clone-into/ViralLink
 ```
+NB. if you plan to provide your own input files please refer to the *Inputs to ViralLink section* to specify the input files before you run the pipeline. Otherwise the pipeline will run with the provided default input files. Do this before you build the docker image.
+
 Type the following command into the terminal: this builds a docker image, starts a docker container and steps into this container (it will take time):
 ```
 bash virallink.sh
@@ -48,7 +50,7 @@ If the above command successfully finished, you should see something like this:
 ```
 root@3c172830ba15:/home/virallink#
 ```
-After you got this prompt in your terminal, you can run the whole pipeline with the following command: NB. if you plan to provide your own input files please refer to the *Inputs to ViralLink section* to specify the input files before you run the pipeline. Otherwise the pipeline will run with the provided default input files.
+After you got this prompt in your terminal, you can run the whole pipeline with the following command:
 ```
 python3 virallink.py
 ```

@@ -108,6 +108,10 @@ results <- results(dds, name=comparison_name[2])
 dds <- estimateSizeFactors(dds)
 norm_counts <- counts(dds, normalized = TRUE)
 write.table(norm_counts, file.path(outdir, "1_process_expression_data",file="counts_normalised_deseq2.txt"), sep = "\t", quote=F)
+# Extract normalised counts for test condition only
+test_samples <- meta_f %>% filter(condition == test)
+norm_counts_test <- subset(norm_counts, select=test_samples$sample_name)
+write.table(norm_counts, file.path(outdir, "1_process_expression_data",file="counts_normalised_deseq2_test.txt"), sep = "\t", quote=F)
 
 # Save differential expression results
 out_file <- paste0("deseq2_res_", comparison_name[2], ".csv")

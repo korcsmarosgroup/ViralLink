@@ -14,6 +14,7 @@
 # Output: R deseq2 data object following differential expression
 #        Table of differential expression results - unfiltered
 #        Table of differential expression results - filtered
+#        Normalised expression table across all samples and only for test condition samples.
 # 
 
 ####### Set up ######

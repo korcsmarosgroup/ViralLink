@@ -179,6 +179,7 @@ When running the whole workflow (not using the scripts seperately), all input fi
 > * Do not edit the parameter names in the *parameters.yml* file.
 > * File paths can be relative and slashes are not required at the beginning and end of the paths.
 > * The whole workflow wrapper will run all scripts in step 1 -> step 6 inclusive. The only script not run is step 7, as it requires interpretation of the results for the purpose of selecting functions of interest to visualise.
+> The below changes must be made before starting the docker container
 
 If the user would like to run the scripts separately from the whole workflow wrapper, each script should be run from the command line, specifying the required input parameters. The parameters for each script can be found in the *deploy/pipeline/scripts/parameters_all.tsv* file and in the script *readme.md* files.
 
@@ -237,7 +238,7 @@ To run ViralLink on your own transcriptomics data there are two required input f
   - Tab-delimited file
   - First column should contain gene names/ids and all other columns are counts values for test samples (as expressed genes are calculated only on test samples).   - The first row should contain a header. 
   
-3. Format your filtered and unfiltered differential expression tables and saved as *deploy/pipeline/output_directory/1_process_expression_data/
+3. Format your filtered and unfiltered differential expression tables and save as *deploy/pipeline/output_directory/1_process_expression_data/
 unfiltered_degs_filename.csv* and *deploy/pipeline/output_directory/1_process_expression_data/filtered_degs_filename.csv* (where *output_directory* is specified in the *paramters.yml* file).
   - The first column contains gene names/ids with header *Gene*.
   - Additionally columns with header *padj* and *log2FoldChange* must exist in the datasets. 

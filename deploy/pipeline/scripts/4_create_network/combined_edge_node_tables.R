@@ -132,6 +132,9 @@ heats$node <- gsub('\\s+', '', heats$node)
 all_nodes <- left_join(all_nodes,heats)
 
 # Add lfc and adj p value for all
+if ("Gene" %in% colnames(lfc)){
+  lfc <- lfc %>% dplyr::rename(X = Gene)
+}
 if (id_type == "symbol"){
   lfc2 <- lfc %>% dplyr::select(gene_symbol = X, log2FoldChange, padj)
 } else if(id_type == "uniprot"){

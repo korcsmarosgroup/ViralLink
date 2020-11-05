@@ -15,7 +15,7 @@
 #        background network file for ppis (contextualised specific PPI network output from filter_network_expressed_genes.R)
 #        background network file for degs (contextualised specific TF-TG network output from filter_network_expressed_genes.R)
 #        
-# Output: Data table, dot plot and map plot for each overrepresentation analysis
+# Output: Data table and dot plot for each overrepresentation analysis (commented out map plot due to package updates causing error when running it)
 
 
 ##### Set up #####
@@ -86,15 +86,15 @@ go_overrep <- function(net, back_nodes, name, id,folder){
     # Get as dataframe
     go2_df <- as.data.frame(go2)
     
-    if (nrow(go1) >1){
-      # Get enrichment map
-      map_ora <- emapplot(go2)
-      # Save map
-      filen <- file.path(folder,paste0(name,"_map_GO_overrep.pdf"))
-      pdf(filen)
-      print(map_ora)
-      dev.off()
-    }
+    #if (nrow(go1) >1){
+    #  # Get enrichment map
+    #  map_ora <- emapplot(go2)
+    #  # Save map
+    #  filen <- file.path(folder,paste0(name,"_map_GO_overrep.pdf"))
+    #  pdf(filen)
+    #  print(map_ora)
+    #  dev.off()
+    #}
     
     # Get dot plot
     dot_plot <- dotplot(go2, showCategory=10, orderBy="qvalue", font.size = 10)
@@ -127,15 +127,15 @@ reactome_overrep <- function(net, back_nodes, name, id,folder){
     # Get as dataframe
     re1_df <- as.data.frame(re1)
     
-    if (nrow(re1) >1){
-      # Get enrichment map
-      map_ora <- emapplot(re1)
-      # Save map
-      filen <- file.path(folder,paste0(name,"_map_reactome_overrep.pdf"))
-      pdf(filen)
-      print(map_ora)
-      dev.off()
-    }
+   # if (nrow(re1) >1){
+   #   # Get enrichment map
+   #   map_ora <- emapplot(re1)
+   #   # Save map
+   #   filen <- file.path(folder,paste0(name,"_map_reactome_overrep.pdf"))
+   #   pdf(filen)
+   #   print(map_ora)
+   #   dev.off()
+   # }
     
     # Get dot plot
     dot_plot <- dotplot(re1, showCategory=10, orderBy="qvalue", font.size = 10)

@@ -11,7 +11,7 @@
 # Input: Node table (csv file) output from cytoscape containing the cluster annotations in the column "MCODE_cluster"
 #        PPI background network file - expressed omnipath network
 #
-# Output: For each cluster (with >= 15 nodes): table of results, dot plot and map plot for GO and Reactome overrepresentation
+# Output: For each cluster (with >= 15 nodes): table of results and dot plot for GO and Reactome overrepresentation (map plot commented out dur to updates causing error)
 #         For all clusters (with >= 15 nodes) together (compareCluster function) dot plot for GO and Reactome overrepresentation
 #
 
@@ -87,15 +87,15 @@ go_overrep <- function(net_heats, back_nodes, name, id,folder){
     # Get as dataframe
     go2_df <- as.data.frame(go2)
     
-    if (nrow(go1) >1){
-      # Get enrichment map
-      map_ora <- emapplot(go2)
-      # Save map
-      filen <- file.path(folder, paste0(name, "_go_overrep_map.pdf"))
-      pdf(filen)
-      print(map_ora)
-      dev.off()
-    }
+    #if (nrow(go1) >1){
+    #  # Get enrichment map
+    #  map_ora <- emapplot(go2)
+    #  # Save map
+    #  filen <- file.path(folder, paste0(name, "_go_overrep_map.pdf"))
+    #  pdf(filen)
+    #  print(map_ora)
+    #  dev.off()
+    #}
     
     # Get dot plot
     dot_plot <- dotplot(go2, showCategory=10, orderBy="qvalue", font.size = 10)
@@ -124,15 +124,15 @@ reactome_overrep <- function(net_heats_e, back_nodes_e, name, id,folder){
     # Get as dataframe
     re1_df <- as.data.frame(re1)
     
-    if (nrow(re1) >1){
-      # Get enrichment map
-      map_ora <- emapplot(re1)
-      # Save map
-      filen <- file.path(folder, paste0(name, "_reactome_overrep_map.pdf"))
-      pdf(filen)
-      print(map_ora)
-      dev.off()
-    }
+    #if (nrow(re1) >1){
+    #  # Get enrichment map
+    #  map_ora <- emapplot(re1)
+    #  # Save map
+    #  filen <- file.path(folder, paste0(name, "_reactome_overrep_map.pdf"))
+    #  pdf(filen)
+    #  print(map_ora)
+    #  dev.off()
+    #}
     
     # Get dot plot
     dot_plot <- dotplot(re1, showCategory=10, orderBy="qvalue", font.size = 10)

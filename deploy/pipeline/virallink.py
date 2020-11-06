@@ -17,6 +17,7 @@ scripts_folders = {
                                            "cytoscape_visualisation.R"],
     "6_functional_analysis": ["network_functional_analysis.R",
                               "cluster_functional_analysis.R",
+                              "network_aware_functional_analysis.R",
                               "reformat_functional_result.R"]
 }
 scripts_parameters = {
@@ -67,6 +68,10 @@ scripts_parameters = {
     "cluster_functional_analysis.R": ["5_betweenness_and_cluster_analysis/node_table_betweenness_clusters.txt",
                                       "2_process_a_priori_networks/omnipath_contextualised_network.txt",
                                       "outdir"],
+    "network_aware_functional_analysis.R": ["4_create_network/node_table.txt",
+                                      "2_process_a_priori_networks/omnipath_contextualised_network.txt",
+                                      "anubixreactome",
+                                      "outdir"],
     "reformat_functional_result.R": ["outdir"]
 }
 
@@ -79,7 +84,7 @@ def checking_input_parameters(script_parameters):
         sys.stdout.write(f" WARNING: There is no appropriate parameter file! It should be parameters.yml\n")
         sys.exit(1)
 
-    neccessary_parameters = ["counts", "meta", "lfccutoff", "pcutoff", "id_type", "hbps", "sars", "outdir"]
+    neccessary_parameters = ["counts", "meta", "lfccutoff", "pcutoff", "id_type", "hbps", "sars", "outdir", "anubixreactome"]
     for nec_param in neccessary_parameters:
         if nec_param not in script_parameters:
             sys.stdout.write(f" WARNING: A parameter is missing from the parameters.yml file: {nec_param}\n\n")

@@ -6,3 +6,4 @@ id_type: symbol
 hbps: input_files/sarscov2-human_ppis_gordon_april2020.txt
 sars: input_files/sarscov2_protein_annotations_revised_oct2020.txt
 outdir: output_directory
+anubixreactome: input_files/anubix_reactome_pathways.txt

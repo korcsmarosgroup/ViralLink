@@ -25,7 +25,7 @@ Rscript network_functional_analysis.R node_table.txt contextualised_ppi_network.
 
 # 2. cluster_functional_analysis.R
 
-Functional analysis of human genes from clusters inside network. Overrepresentation analysis - reactome and GO BP - using cell type specific network as background.
+Functional analysis of human genes from clusters inside network. Overrepresentation analysis - reactome and GO BP - using contextualised network as background.
 
 >NB. 
 >* GO analyses carried out using uniprot IDs for the ppi nodes, but for the Reactome analysis it was necessary to convert to ENTREZ
@@ -46,7 +46,32 @@ Functional analysis of human genes from clusters inside network. Overrepresentat
 Rscript cluster_functional_analysis.R node_table_betweenness_clusters.txt contextualised_ppi_network.txt output_directory
 ```
 
-# 3. reformat_functional_result.R
+# 3. network_aware_functional_analysis.R
+
+Pathway analysis of upstream signalling proteins (binding proteins-TFs inclusive) from causal network. Uses ANUBIX network aware pathway analysis tool. Reactome and KEGG pathways analysed. Using contextualised omnipath network as background.
+
+>NB. 
+>* Reactome and KEGG pathway annotations obtained from ANUBIX R package (for KEGG) and on BitBucket site (for Reactome)
+>* Reactome and KEGG pathway nodes converted to Uniprot to be comparable to input networks
+>* Used contextualised specific PPI network (expressed omnipath) as background
+>* Significantly overrepresented pathways have q val <= 0.05
+
+**Input:**
+* Whole network node file (output from combined_edge_node_tables.R)
+# Background network file for ppis (contextualised specific PPI network output from filter_network_expressed_genes.R)
+# Reactome pathway file downloaded from ANUBIX bitbucket page (saved in *input_files/anubix_reactome_pathways.txt*)
+
+**Output:**
+* Table of enriched Reactome pathways (q <= 0.05)
+# Table of enriched KEGG pathways (q <= 0.05)
+
+**Run from command line:**
+ 
+```
+Rscript network_aware_functional_analysis.R node_table.txt contextualised_ppi_network.txt input_files/anubix_reactome_pathways.txt output_directory
+```
+
+# 4. reformat_functional_result.R
 
 Script to reformat functional enrichment results (output from network_functions_analysis.R) into table of gene annotations. 
 

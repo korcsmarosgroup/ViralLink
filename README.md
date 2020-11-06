@@ -25,7 +25,7 @@ NOTE: The whole pipeline (with the example input data) needs around 8 GB of memo
 
 ### Dockerised pipeline
 
-The dockerised pipeline requires only a few commands to run the whole analysis. Here you need to have Docker installed and working on your computer (docker version >=3). This is easily downloadable from the Docker website (www.docker.com). Also remember to edit the memory settings to give Docker at least 8 GB of memory.
+The dockerised pipeline requires only a few commands to run the whole analysis. Here you need to have Docker installed and working on your computer (docker version >=3). This is easily downloadable from the Docker website (www.docker.com). Also remember to edit the memory settings to give Docker at least 6 GB of memory.
 
 #### Running dockerised ViralLink
 
@@ -62,6 +62,14 @@ If you want to run any steps separately from the others, you need to navigate in
 cd scripts/1_process_expression_data/
 ```
 
+#### Save files from the docker container to your computer
+
+* If you are done with your pipeline run and you would like to save out the results from the docker container to your computer, you can do that with the following commands.
+* First of all, do not close the docker container! Then, open a new terminal tab and run the following command to save the results in your computer:
+```
+docker cp -r virallink:/path/of/the/results/folder /path/on/your/computer/
+```
+
 #### Debugging
 
 * Upon running ‘bash virallink.sh’ an error such as the following means that docker is not installed on your computer:
@@ -77,16 +85,6 @@ You should be able to get around this problem by opening the _virallink.sh file 
 ```
 -p 5900:5900 \
 ```
-
-#### Save files from the docker container to your computer
-
-* If you are done with your pipeline run and you would like to save out the results from the docker container to your computer, you can do that with the following commands.
-* First of all, do not close the docker container! Then, open a new terminal tab and run the following command to save the results in your computer:
-```
-docker cp virallink:/path/of/the/results/file /path/on/your/computer/
-```
-
-
 
 ### Non-dockerised pipeline
 
@@ -115,6 +113,7 @@ reshape2
 naniar
 clusterProfiler
 ReactomePA
+ANUBIX
 ```
 
 To install R packages, type the following into the terminal:
@@ -124,6 +123,7 @@ R
 install.packages(c("BiocManager","tidyverse","devtools", "igraph","reshape2","naniar"))
 require(devtools)
 install_github('saezlab/OmnipathR')
+install_bitbucket("sonnhammergroup/anubix")
 BiocManager::install("RCy3","DESeq2","clusterProfiler","ReactomePA","org.Hs.eg.db")
 quit()
 ```
@@ -221,7 +221,12 @@ To run ViralLink on your own transcriptomics data there are two required input f
   - Tab-delimited with one line per protein
   - At least 2 columns named *Accession* and *gene_symbol*
 
-5. Reactome annotations for all human UniProt IDs
+5. Reactome annotations for human Ensembl IDs created specifically for ANUBIX network aware pathway analysis tool
+  - Required for network aware pathway analysis using ANUBIX ([*Castresana-Aguirre and Sonnhammer*](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7423893/))
+  - Obtained from *https://bitbucket.org/sonnhammergroup/anubix/src/master/anubix_benchmark/* on 05-11-2020 and saved as *input_files/anubix_reactome_pathways.txt*
+  - Tab delimited text file with Ensembl gene IDs in column 1 and pathway annotations in column 2.
+  
+6. Reactome annotations for all human UniProt IDs
   - Only required for the *filter_networks_by_functions.R* script (which is not part of the Python wrapper)
   - Provided based on data downloaded from Reactome on 30/04/2020: *input_files/reactome_annotations_uniprot_300420.txt*
   - Tab-delimited text file with 2 columns: uniprot id column "gene" and a column of Reactome pathway names separated by ";", named "reactome"
@@ -293,4 +298,8 @@ ViralLink outputs a number of different files. The most important are the final 
 [*Gordon et al.*](https://www.nature.com/articles/s41586-020-2286-9):
 
 > Gordon DE., Jang GM., Bouhaddou M., *et al.*. (2020). A SARS-CoV-2 protein interaction map reveals targets for drug repurposing, *Nature*, https://doi.org/10.1038/s41586-020-2286-9.
+
+[*Castresana-Aguirre and Sonnhammer*](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7423893/):
+
+> Castresana-Aguirre M. and Sonnhammer ELL. (2020). Pathway-specific model estimation for improved pathway annotation by network crosstalk, *Scientific Reports*, https://doi.org/10.1038/s41598-020-70239-z.
 

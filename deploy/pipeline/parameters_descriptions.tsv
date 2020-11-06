@@ -7,3 +7,4 @@ id_type	symbols	ID type in the input counts table: *symbol* or *uniprot*
 hbps	input_files/sarscov2-human_ppis_gordon_april2020.txt	Viral - human protein-protein interaction table. Tab delimited with one line per interaction. Columns named *viral_protein* and *human_protein* Human proteins should be in UniProt format.
 sars	input_files/sarscov2_protein_annotations.txt	"Gene symbol annotations for all input viral proteins, for ease of data interpretation. Tab-delimited with one line per protein. At least 2 columns named *Accession* and *gene_symbol*"
 outdir	output_directory	Folder for all results to be saved to (subdirectories are created automatically for each step in the workflow)
+anubixreactome	input_files/anubix_reactome_pathways.txt	Reactome pathway - gene associations provided by ANUBIX for network aware functional analysis. From the ANUBIX BitBucket website and referenced in the ANUBIX paper.

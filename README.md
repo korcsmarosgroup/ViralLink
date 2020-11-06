@@ -67,7 +67,7 @@ cd scripts/1_process_expression_data/
 * If you are done with your pipeline run and you would like to save out the results from the docker container to your computer, you can do that with the following commands.
 * First of all, do not close the docker container! Then, open a new terminal tab and run the following command to save the results in your computer:
 ```
-docker cp -r virallink:/path/of/the/results/folder /path/on/your/computer/
+docker cp virallink:/home/virallink/output_directory /path/on/your/computer/
 ```
 
 #### Debugging

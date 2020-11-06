@@ -58,12 +58,12 @@ Pathway analysis of upstream signalling proteins (binding proteins-TFs inclusive
 
 **Input:**
 * Whole network node file (output from combined_edge_node_tables.R)
-# Background network file for ppis (contextualised specific PPI network output from filter_network_expressed_genes.R)
-# Reactome pathway file downloaded from ANUBIX bitbucket page (saved in *input_files/anubix_reactome_pathways.txt*)
+* Background network file for ppis (contextualised specific PPI network output from filter_network_expressed_genes.R)
+* Reactome pathway file downloaded from ANUBIX bitbucket page (saved in *input_files/anubix_reactome_pathways.txt*)
 
 **Output:**
 * Table of enriched Reactome pathways (q <= 0.05)
-# Table of enriched KEGG pathways (q <= 0.05)
+* Table of enriched KEGG pathways (q <= 0.05)
 
 **Run from command line:**
  

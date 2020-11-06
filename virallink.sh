@@ -5,6 +5,8 @@ docker build deploy/ -t virallink:latest
 docker rm -f virallink
 docker run -it --rm \
                 --name virallink \
+                -p 5900:5900 \
+                -p 1234:1234 \
                 -p 8080:8080 \
                 -p 6080:6080 \
                 -e no_proxy=localhost \

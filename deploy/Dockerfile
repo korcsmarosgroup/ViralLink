@@ -26,6 +26,7 @@ RUN echo "/home/seluser/cytoscape/cytoscape-unix-$CYTOSCAPE_VERSION/cytoscape.sh
 RUN chmod 777 /home/seluser/cytoscape/start.sh
 
 WORKDIR /home/seluser
+RUN sudo apt-get -y install git
 RUN git clone https://github.com/novnc/noVNC.git
 
 USER root
@@ -36,7 +37,8 @@ ENV LC_ALL en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV PYTHONPATH /home/virallink/
 
-RUN /install_python.sh && /install_r.sh
+RUN /bin/bash /install_python.sh
+RUN /bin/bash /install_r.sh
 
 ADD /pipeline /home/virallink/
 WORKDIR /home/virallink

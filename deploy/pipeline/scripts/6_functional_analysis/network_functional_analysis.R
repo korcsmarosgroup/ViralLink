@@ -20,6 +20,9 @@
 
 ##### Set up #####
 
+# Set timeout
+options(timeout=120)
+
 # Capture  messages and errors to a file.
 zz <- file("virallink.out", open="a")
 sink(zz, type="message", append = TRUE)

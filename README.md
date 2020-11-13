@@ -20,16 +20,43 @@ More detailed information about ViralLink is available in the following paper:
 ----
 ## Getting Started
 
-You can run the pipeline with or without a dockerisation. In both of the options, you can run the whole pipeline at once or you can run the different steps separately from each other.<br><br>
-NOTE: The whole pipeline (with the example input data) needs around 8 GB of memory! But the memory allocation will vary on the input dataset. For example if you try to use it on a bigger dataset then they may require more memory! You can change the memory available to Docker in the Docker application settings.
+You can run the pipeline with or without a dockerisation. In both of the options, you can run the whole pipeline at once or you can run the different steps separately from each other. The dockerised and non dockerised versions have been successfully tested on OSX and Linux. The dockerised version has also been successfully tested on Windows 10, although a few extra steps are required. <br><br>
+NOTE: The whole pipeline (with the example input data) needs around 6 GB of memory! But the memory allocation will vary on the input dataset. For example if you try to use it on a bigger dataset then they may require more memory! You can change the memory available to Docker in the Docker application settings.
 
 ### Dockerised pipeline
 
-The dockerised pipeline requires only a few commands to run the whole analysis. Here you need to have Docker installed and working on your computer (docker version >=3). This is easily downloadable from the Docker website (www.docker.com). Also remember to edit the memory settings to give Docker at least 6 GB of memory.
+The dockerised pipeline requires only a few commands to run the whole analysis. Here you need to have Docker installed and open on your computer (docker version >=3). This is easily downloadable from the Docker website (www.docker.com). Also remember to edit the memory settings to give Docker at least 6 GB of memory. If you are running the dockerised pipeline on Windows please refer to the *Windows-specific set up* section for additional set up requirements. If running on OSX or Linux please skip the *Windows-specific set up* section.
+
+#### Windows-specific set up
+
+1.  Running the dockerised pipeline on Windows requires Docker to be installed. Running Docker requires enabling of Hyper-V in BIOS which is only available for Windows 10 Pro, Enterprise, and Education (*https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v*).
+
+2. WSL2 should be installed and set as default (*https://docs.microsoft.com/en-us/windows/wsl/install-win10*). N.B. for step 6 in this webpage we succeessfully tested with Ubuntu 20.04 LTS.
+
+3.  In the Docker settings select "WSL2 based engine".
+
+4. Download the ViralLink repository using the _Clone or download_ button on the Github web page or by typing the following into the Command Prompt (if you have *git* installed):
+
+```
+cd folder/to/clone-into/
+git clone git@github.com:korcsmarosgroup/ViralLink.git
+```
+
+4. Open the Command Prompt and convert all ".sh" files within the ViralLink folder to 'unix' format (they are automatically converted to dos when downloaded). You may need to install *dos2unix* in order to so this (*http://gnuwin32.sourceforge.net/packages/cygutils.htm*).
+
+```
+cd /path/to/ViraLink
+dos2unix entry_point.sh
+dos2unix install_base_layer.sh
+dos2unix install_python.sh
+dos2unix install_r.sh
+```
+
+5. From here you should be able to continue with the instructions within the *Running dockerised ViralLink* section below. use the Command Prompt as your terminal.
 
 #### Running dockerised ViralLink
 
-To use the dockerised ViralLink, download the ViralLink repository using the _Clone or download_ button on the Github web page or by typing the following into a terminal window:
+To use the dockerised ViralLink, download the ViralLink repository using the _Clone or download_ button on the Github web page or by typing the following into a terminal window (of course, if you already did this during the Windows instructions then skip it):
 
 ```
 cd folder/to/clone-into/
@@ -55,7 +82,7 @@ After you got this prompt in your terminal, you can run the whole pipeline with 
 python3 virallink.py
 ```
 
-The speed of the whole pipeline run is roughly between 2 and 2 ½ hours, but this will depend on the hardware which it is being run on.
+The speed of the whole pipeline run is roughly between 2 - 2 ½ hours, but this will depend on the hardware which it is being run on.
 
 If you want to run any steps separately from the others, you need to navigate into the scripts folder after you got your prompt inside the docker container: ```root@3c172830ba15:/home/virallink#```. Every step has its own readme file, which contains the information on how you can run the given step only. For example:
 ```
@@ -68,11 +95,12 @@ cd scripts/1_process_expression_data/
 * First of all, do not close the docker container! Then, open a new terminal tab and run the following command to save the results in your computer:
 ```
 docker cp virallink:/home/virallink/output_directory /path/on/your/computer/
+docker cp virallink:/home/virallink/virallink.out /path/on/your/computer/
 ```
 
 #### Debugging
 
-* Upon running ‘bash virallink.sh’ an error such as the following means that docker is not installed on your computer:
+* Upon running ‘bash virallink.sh’ an error such as the following means that docker is not installed or running on your computer:
 ```
 virallink.sh: line 4: docker: command not found
 ```
@@ -92,7 +120,7 @@ The pipeline can also be run using local installations of Python and R (with ass
 
 #### Prerequisites
 
-ViralLink should run on any UNIX system, and has been tested on Linux and Mac OS. Windows compatibility is not supported at this time - (use the Dockerised pipeline to run ViralLink on Windows).
+ViralLink should run on any UNIX system, and has been tested on Linux and Mac OS. Windows compatibility is not supported at this time - (use the dockerised pipeline to run ViralLink on Windows).
 
 **R (≥ 4.0.0)** and **Python 3** are required to run the workflow. Additionally, for clustering analysis and visualisation, **Cytoscape (≥ 7.0.0)** is required (AND IT MUST BE OPEN LOCALLY when the scripts are run - or these functions will be skipped).
 

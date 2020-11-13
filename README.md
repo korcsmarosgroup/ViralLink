@@ -52,7 +52,7 @@ dos2unix install_python.sh
 dos2unix install_r.sh
 ```
 
-5. From here you should be able to continue with the instructions within the *Running dockerised ViralLink* section below. use the Command Prompt as your terminal.
+5. From here you should be able to continue with the instructions within the *Running dockerised ViralLink* section below. Use the Command Prompt as your terminal.
 
 #### Running dockerised ViralLink
 

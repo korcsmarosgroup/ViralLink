@@ -4,7 +4,12 @@ apt-get update
 
 apt-get -y install python3.6 python3.6-dev python3-setuptools python3-pip
 update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 1
+update-alternatives --set python3 /usr/bin/python3.5
+add-apt-repository ppa:cran/libgit2
+apt-get update
+apt-get -y install libgit2-dev
 update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 2
+update-alternatives --set python3 /usr/bin/python3.6
 pip3 install --upgrade numpy==1.19.4
 pip3 install --upgrade scipy==1.5.4
 pip3 install --upgrade pandas==1.1.4

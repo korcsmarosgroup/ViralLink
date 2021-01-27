@@ -1,4 +1,4 @@
-****# 1. combined_edge_node_tables.R
+###### 1. combined_edge_node_tables.R
 
 Script to combine the subnetworks into 1 network table and 1 node table
 

@@ -73,7 +73,7 @@ rec_tf2 <- rec_tf %>% mutate(layer= "bindingprot-tf")
 
 if("sign" %in% colnames(hbps)){
   hbps2 <- hbps %>% mutate(Relationship = ifelse(sign == "-","inhibits>", ifelse(sign=="+", "stimulates>", "unknown")))  %>%
-    select(-c(sign)) %>%
+    dplyr::select(-c(sign)) %>%
     mutate(layer = "cov-bindingprot") %>%
     dplyr::rename(Source.node = viral_protein, Target.node = human_protein) %>%
     filter(Target.node %in% rec_tf2$Source.node)

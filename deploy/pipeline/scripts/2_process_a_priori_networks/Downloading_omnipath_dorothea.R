@@ -24,10 +24,13 @@ if(!'OmnipathR' %in% installed.packages()[,"Package"]){
   require(devtools)
   install_github('saezlab/OmnipathR')
 }
+if (!requireNamespace("igraph", quietly = TRUE)) 
+  install.packages("igraph")
 
 # Loading the required packages
 library(tidyverse)
 library(OmnipathR)
+library(igraph)
 
 # Define parameters
 args <- commandArgs(trailingOnly = TRUE)

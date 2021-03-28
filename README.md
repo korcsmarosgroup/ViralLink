@@ -45,14 +45,14 @@ git clone git@github.com:korcsmarosgroup/ViralLink.git
 4. Open the Command Prompt and convert all ".sh" files within the ViralLink folder to 'unix' format (they are automatically converted to dos when downloaded). You may need to install *dos2unix* in order to so this (*http://gnuwin32.sourceforge.net/packages/cygutils.htm*).
 
 ```
-cd /path/to/ViraLink
+cd /path/to/ViraLink/deploy
 dos2unix entry_point.sh
 dos2unix install_base_layer.sh
 dos2unix install_python.sh
 dos2unix install_r.sh
 ```
 
-5. From here you should be able to continue with the instructions within the *Running dockerised ViralLink* section below. Use the Command Prompt as your terminal.
+5. From here you should be able to continue with the instructions within the *Running dockerised ViralLink* section below. Use the 'Windows terminal' as your terminal.
 
 #### Running dockerised ViralLink
 

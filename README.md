@@ -50,9 +50,11 @@ dos2unix entry_point.sh
 dos2unix install_base_layer.sh
 dos2unix install_python.sh
 dos2unix install_r.sh
+cd ../
+dos2unix virallink.sh
 ```
 
-5. From here you should be able to continue with the instructions within the *Running dockerised ViralLink* section below. Use the 'Windows terminal' as your terminal.
+5. From here you should be able to continue with the instructions within the *Running dockerised ViralLink* section below. Use the Windows terminal command prompt as your terminal.
 
 #### Running dockerised ViralLink
 

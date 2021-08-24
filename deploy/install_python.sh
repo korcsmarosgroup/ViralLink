@@ -10,10 +10,12 @@ apt-get update
 apt-get -y install libgit2-dev
 update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 2
 update-alternatives --set python3 /usr/bin/python3.6
-pip3 install --upgrade numpy==1.19.4
-pip3 install --upgrade scipy==1.5.4
-pip3 install --upgrade pandas==1.1.4
-pip3 install --upgrade matplotlib==3.3.3
-pip3 install --upgrade argparse
-pip3 install --upgrade pyfasta==0.5.2
-pip3 install --upgrade networkx==2.5
+update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 3
+update-alternatives --set python3 /usr/bin/python3.7
+pip3 install numpy==1.19.4
+pip3 install scipy==1.5.4
+pip3 install pandas==1.1.4
+pip3 install matplotlib==3.3.3
+pip3 install argparse
+pip3 install pyfasta==0.5.2
+pip3 install networkx==2.5

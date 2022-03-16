@@ -13,7 +13,7 @@ Without docker: the whole pipeline (via a Python wrapper script) and/or the sepa
 
 More detailed information about ViralLink is available in the following paper:
 
-> Treveil A., Bohar B., Sudhakar P. et al. [ViralLink: An integrated workflow to investigate the effect of SARS-CoV-2 on intracellular signalling and regulatory pathways] https://doi.org/10.1101/2020.06.23.167254, _BioRxiv_, (2020)
+> Treveil A., Bohar B., Sudhakar P. et al. [ViralLink: An integrated workflow to investigate the effect of SARS-CoV-2 on intracellular signalling and regulatory pathways] https://doi.org/10.1371/journal.pcbi.1008685, _PlosCompBiol_, (2022)
 
 <img src="virallink_overview.png" align="center" width="500">
 
